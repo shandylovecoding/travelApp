@@ -17,7 +17,6 @@ nav{
     margin: 20px;
 }
 .carousel-caption{
-    position: absolute;
     top: 50vh;
 }
 h1 {
@@ -76,7 +75,6 @@ h6 {
 .searchform{
     border-radius: 25px;
     padding: 10px 20px 10px 20px;
-    position: relative;
     background-color: rgba(0, 0, 0, 0.2);
     border-color: transparent;
     -webkit-appearance: none;
@@ -95,4 +93,8 @@ h6 {
 ::placeholder{
     color: hsl(0, 0%,80%);
     font: 400 13.3333px Arial;
+}
+
+.modal{
+    top:15vh;
 }
