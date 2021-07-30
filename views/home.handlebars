@@ -1,0 +1,85 @@
+<section class="homePage">
+    
+    <div id="demo" class="carousel slide fixed-top " data-ride="carousel">
+
+        <nav class="navbar navbar-expand-lg navbar-light lighten-4 fixed-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="logo">
+                <a class="navbar-brand" href="#">
+                    <h2>TripPlanner</h2>
+                </a>
+            </div>
+            <div class="searcher">
+                <form id="search_form" class="searchform" role="search" method="get" action="/search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="searcher" id="searcher" name="search" value=""
+                        placeholder="Search tour by keywords" autocomplete="off">
+                    <div id="menu_search_autocomplete" class="autocomplete" data-mousedown="false"></div>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse  d-flex justify-content-around" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                         {{!-- <a data-target="#fLogin" data-toggle="modal">Login</a> --}}
+                        <a class="nav-link" href="/logout">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+       
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-caption">
+                    <h1>Iceland</h1><br>
+                    <h6>Design Your Own Unique Experience</h6>
+
+                </div>
+                <img src="/carousel1.jpeg" alt="Iceland" width="100%" height="100%">
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption">
+                    <h1>NewZealand</h1><br>
+                    <h6>Design Your Own Unique Experience</h6>
+
+                </div>
+                <img src="/carousel2.jpeg" alt="NewZealand" width="100%" height="100%">
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption">
+                    <h1>Austria</h1><br>
+                    <h6>Design Your Own Unique Experience</h6>
+                </div>
+                <img src="/carousel3.jpeg" alt="Austria" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    
+</section>
