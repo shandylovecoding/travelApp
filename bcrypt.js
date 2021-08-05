@@ -6,8 +6,8 @@ module.exports.hashPassword = (plainTextPassword) => {
       if (err) {
         reject(err);
       }
-
-      bcrypt.hash(plainTextPassword, salt, (err, hash) => {
+      let newPassword = plainTextPassword.toString()
+      bcrypt.hash(newPassword, salt, (err, hash) => {
         if (err) {
           reject(err);
         }
