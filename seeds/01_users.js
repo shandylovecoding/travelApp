@@ -22,7 +22,7 @@ exports.seed = function (knex) {
           email: 'john@gmail.com',
           username: 'john1',
           password: 'johnpassword'
-        },
+        }
         
       ]);
     });
