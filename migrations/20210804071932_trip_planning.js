@@ -12,5 +12,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable("trip_planning");
+    return knex.schema.dropTable("tripPlan");
 };
