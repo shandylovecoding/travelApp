@@ -8,7 +8,7 @@ exports.up = function(knex) {
     table.foreign('country_id').references('districts.id');
     table.string('content');
     table.string('time_of_creation');
-    table.timestamps(false,true) ;
+    table.timestamps(false,true);
   })
 };
 
