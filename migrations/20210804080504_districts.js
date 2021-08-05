@@ -1,9 +1,8 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('countries', (table) => {
+    return knex.schema.createTable('districts', (table) => {
         table.increments('id').primary();
         table.string('name').unique();
-        table.string('miscInfo');
         table.timestamps(false,true); 
 
     })
