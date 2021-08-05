@@ -4,8 +4,8 @@ exports.up = function(knex) {
       table.increments('id').primary();
       table.integer('user_id').unsigned();
       table.foreign('user_id').references('users.id');
+      table.string('collections');
       table.timestamps(false,true);
-      
   })
 };
 
