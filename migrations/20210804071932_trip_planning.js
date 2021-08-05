@@ -6,7 +6,6 @@ exports.up = function(knex) {
       table.foreign('user_id').references('users.id');
       table.string('collections');
       table.timestamps(false,true);
-      
   })
 };
 
