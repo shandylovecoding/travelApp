@@ -3,7 +3,9 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const handlebars = require("express-handlebars");
-
+const SearchRouter = require('./routers/searchRouter')
+const SearchService = require('./services/searchService')
+var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
 
@@ -25,7 +27,6 @@ require("dotenv").config();
 
 const knexFile = require("./knexfile").development;
 const knex = require("knex")(knexFile);
-console.log(knexFile)
 
 
 app.use(passport.initialize());
@@ -72,7 +73,6 @@ passport.use(
     passReqToCallback: true
   },async (req, email, password, done) => {
     try {
-      console.log(">>>>>",email,req.body.username, password);
       let users = await knex("users").where({ email: email });
       if (users.length > 0) {
         return done(null, false, { message: "Email in use... " });
@@ -80,14 +80,12 @@ passport.use(
       // add hash later
 
       let hash = await bcrypt.hashPassword(password);
-      console.log(hash);
 
       const newUser = {
         email: email,
         username: req.body.username,
         password: hash,
       };
-      console.log("newUser",newUser);
       let userID = await knex("users").insert(newUser).returning("id");
       newUser.id = userID[0];
       done(null, newUser);
@@ -106,16 +104,36 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
-
-// passport facebook
-
+hbs.handlebars.registerHelper('eachUnique', function(array, options) {
+  // this is used for the lookup
+  var  dupCheck = {};
+  // template buffer
+  var buffer = '';
+  for( var i=0; i< array.length; i++){
+    console.log(">>>>>",array);
+    var entry = array[i];
+    var uniqueKey = entry.name + entry.introduction + entry.photo;
+    // check if the entry has been added already
+    if(!dupCheck[uniqueKey]){
+      // here there are only unique values
+      dupCheck[uniqueKey] = true;
+      // add this in the template
+      buffer += options.fn(entry);
+    }
+  }
+  // return the template compiled
+  return buffer;
+});
 
 app.use("/", router);
 
 
+const searchService = new SearchService(knex)
+
+app.use("/search", new SearchRouter(searchService).router())
 
 // non facebook app
-app.listen(8080, () => {
+app.listen(8000, () => {
   console.log("Application listening to port 8080");
 });
 

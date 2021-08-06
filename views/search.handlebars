@@ -1,0 +1,30 @@
+<div id="search" class="heading" style="top: 50vh">
+{{#eachUnique content}}
+<div id={{id}} class="explore_title">Explore {{name}}</div>
+
+
+<div class="explore_button">
+    <div class="head_buttons">Hotels</div>
+    <div class="head_buttons">Journals</div>
+    <div class="head_buttons">Things To Do</div>
+    <div class="head_buttons">Restaurant</div>
+</div>
+
+<div class="district_photo">
+    <img src={{photo}}>
+</div>
+
+<div class="district_intro">
+    {{introduction}}
+</div>
+{{/eachUnique}}
+{{#each content}}
+<div class="card attraction">
+<div class="att_name">{{att_name}}</div>
+<div class="att_name">  <img src={{att_photo}}></div>
+<div class="att_name">{{att_intro}}</div>
+</div>
+{{/each}}
+
+
+</div>
