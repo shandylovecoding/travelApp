@@ -13,6 +13,7 @@ module.exports = (express, passport) => {
     router.get('/', (req, res) => {
         res.render('home')
     })
+   
     router.get('/login', (req, res) => {
         res.render('login')
     })
@@ -51,5 +52,12 @@ router.post(
     req.logout();
     res.redirect("/login");
   });
+
+   //trips home page
+   router.get('/tripsHome', (req, res) => {
+    res.render('tripsHome');
+  })
     return router
+    
+   
 }

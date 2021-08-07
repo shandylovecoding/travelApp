@@ -5,6 +5,8 @@ body{
     font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
 
+
+
 nav{
     padding: 50px;
     display: flex;
@@ -98,3 +100,6 @@ h6 {
 .modal{
     top:15vh;
 }
+
+
+
