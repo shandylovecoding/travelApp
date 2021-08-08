@@ -62,13 +62,27 @@ exports.seed = function (knex) {
         },
         {
           id: 3,
+          district_id: 1,
+          attraction_name: 'Western Market',
+          attraction_introduction: ' Inside this Edwardian-style building, see fabric stores, bakeries and dessert shops, cafés and souvenir shops',
+          attraction_photo:'/westernmarket.jpeg'
+        },
+        {
+          id: 4,
+          district_id: 1,
+          attraction_name: 'Mid-levels Escalator',
+          attraction_introduction: 'Walk to the base of the Central Escalators (also called the Mid-Levels Escalators), the world’s longest outdoor escalator system, covering a distance of nearly 2,600 feet.',
+          attraction_photo:'/midlevelEscalator.jpeg'
+        },
+        {
+          id: 5,
           district_id: 2,
           attraction_name: 'K11 Musea',
           attraction_introduction: 'With a name inspired by the Muses in Greek mythology.',
           attraction_photo:'/dingding.jpeg'
         },
         {
-          id: 4,
+          id: 6,
           district_id: 3,
           attraction_name: 'IFC Mall',
           attraction_introduction: 'The International Finance Centre, abbreviated as IFC is a skyscraper and an integrated commercial development on the waterfront of Hong Kong Central District.',

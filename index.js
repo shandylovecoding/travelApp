@@ -104,13 +104,14 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
+
+
 hbs.handlebars.registerHelper('eachUnique', function(array, options) {
   // this is used for the lookup
   var  dupCheck = {};
   // template buffer
   var buffer = '';
   for( var i=0; i< array.length; i++){
-    console.log(">>>>>",array);
     var entry = array[i];
     var uniqueKey = entry.name + entry.introduction + entry.photo;
     // check if the entry has been added already
@@ -122,6 +123,7 @@ hbs.handlebars.registerHelper('eachUnique', function(array, options) {
     }
   }
   // return the template compiled
+  console.log("buffer",buffer);
   return buffer;
 });
 
