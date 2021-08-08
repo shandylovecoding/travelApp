@@ -9,7 +9,9 @@ exports.up = function(knex) {
 
     .createTable('districts', (table) => {
         table.increments('id').primary();
-        table.string('name').unique();
+        table.string('district_name').unique();
+        table.string('district_introduction',500).notNullable();
+        table.binary('district_photo', 250).notNullable();
         table.timestamps(false,true); 
     })
 
@@ -17,8 +19,9 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.integer('district_id').unsigned();
         table.foreign('district_id').references('districts.id')
-        table.string('name').unique();
-        table.string('introduction');
+        table.string('attraction_name').unique();
+        table.string('attraction_introduction');
+        table.binary('attraction_photo', 250).notNullable();
         table.timestamps(false,true);
       })
       .createTable("tripPlan", (table) => {
