@@ -24,6 +24,7 @@ class searchService {
           att_photo:row.attraction_photo
         }
         ));
+       
         });
     }
 }
