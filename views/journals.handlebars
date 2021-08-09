@@ -1,6 +1,6 @@
-<form id="postjournals" action="/api/journals" method="POST" enctype="multipart/form-data">
-    <textarea type="text" name="test" id="test" cols="50" rows="10"></textarea>
-     <input type="file" name="">
+<form id="postjournals" action="/api/journals" method="POST" enctype="multipart/form-data" >
+    <textarea type="text" name="post" id="post" cols="50" rows="10"></textarea>
+     Attach Photo: <input type="file" name="photo">
      <input type="submit" value="Post">
     
 </form>
@@ -8,7 +8,9 @@
 
 {{#each list}}
 <div class="journal">
+    <img src="data:image/png;base64, {{this.photos}}" alt="">
     <span class="journalsContent" data-id="{{this.id}}">{{this.content}}</span>
     <button id="delete" class="remove btn btn-outline-primary btn-sm" data-id="{{this.id}}">Delete</button>    
+
 </div>
 {{/each}}

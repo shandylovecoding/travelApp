@@ -1,7 +1,7 @@
 const express = require("express");
 
 class JournalsRouter {
-    constructor(journalsService){
+    constructor(journalsService) {
         this.journalsService = journalsService;
     }
 
@@ -9,36 +9,40 @@ class JournalsRouter {
         let router = express.Router();
         router.get("/", this.get.bind(this));
         router.post("/", this.post.bind(this));
-        router.post("/photo", this.postPhoto.bind(this));
         // router.put("/:id", this.put.bind(this));
         router.delete("/:id", this.delete.bind(this));
         return router;
-      }
-    
-    get(req, res){
+    }
+
+    get(req, res) {
         console.log("get")
         return this.journalsService.list("jack1").then((results) => {
-            return res.render('journals', {list: results});
+            return res.render('journals', {
+                list: results
+            });
         });
     }
-    post(req, res){
+    post(req, res) {
         console.log('post')
-        return this.journalsService.add(req.body.test).then(() => {
-            return res.redirect("/api/journals");           
-        });
+        if (req.files) {
+            console.log('has photo')
+            return this.journalsService.add(req.body.post, req.files.photo.data).then(() => {
+                return res.redirect("/api/journals");
+            })
+        } else {
+            console.log('no photo')
+            return this.journalsService.add(req.body.post).then(() => {
+                    return res.redirect("/api/journals");
+                })
+            }
+        }
+
+        delete(req, res) {
+            console.log('delete')
+            return this.journalsService.remove(req.params.id).then(() => {
+                return res.send('deleted');
+            })
+        }
     }
 
-    postPhoto(req,res){
-
-    }
-
-    delete(req, res){
-        console.log('delete')
-        return this.journalsService.remove(req.params.id).then(() => {
-            console.log(1)
-            return res.send('deleted');           
-        } )
-    }
-}
-
-module.exports = JournalsRouter;
+    module.exports = JournalsRouter;

@@ -11,6 +11,20 @@ $(() => {
             });
     });
 })
+// var photo = document.getElementById('photo')
+// var myForm = document.getElementById('postjournals');
+// var formData = new FormData(myForm);
+// console.log(formData)
 
-var myForm = document.getElementById('postjournals');
-var formData = new FormData(myForm);
+// $("#postjournals").on("submit", (event) => {
+//     event.preventDefault();
+//     console.log(photo.files)
+//     formData.append("photo", photo.files[0])
+//     console.log(formData)
+//     fetch('/api/journals',{
+//         method: "post",
+//         body: formData
+//     })
+// })
+
+// })
