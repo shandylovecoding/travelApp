@@ -25,7 +25,7 @@ exports.up = function(knex) {
         table.timestamps(false,true);
       })
 
-      .createTable("tripPlan", (table) => {
+      .createTable("trip_plan", (table) => {
         table.increments().primary();
         table.integer('user_id').unsigned();
         table.foreign('user_id').references('users.id');
