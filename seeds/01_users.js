@@ -91,14 +91,14 @@ exports.seed = function (knex) {
       ]);
     })
     .then(()=>{
-      return knex('tripPlan').del();
+      return knex('trip_plan').del();
     })
     .then(function () {
       // Inserts seed entries
-      return knex('tripPlan').insert([
-        {id: 1, user_id: 1, attraction_id: 1, tripName: 'hk'},
-        {id: 2, user_id: 2, attraction_id: 2, tripName: 'hkdream'},
-        {id: 3, user_id: 3, attraction_id: 3, tripName: 'hkfun'}
+      return knex('trip_plan').insert([
+        {id: 1, user_id: 1, attraction_id: 1, tripName: 'hk', tripInfo: 'what to eat?'},
+        {id: 2, user_id: 2, attraction_id: 2, tripName: 'hkdream', tripInfo: 'where to go?'},
+        {id: 3, user_id: 3, attraction_id: 3, tripName: 'hkfun', tripInfo: 'What to do?'}
       ]);
     })
     .then(()=>{

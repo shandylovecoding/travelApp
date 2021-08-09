@@ -5,6 +5,8 @@ const passport = require("passport");
 const handlebars = require("express-handlebars");
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
+const tripsHomeRouter = require('./routers/tripsHomeRouter');
+const tripsHomeService = require('./services/tripsHomeService');
 var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
@@ -36,6 +38,7 @@ app.use(passport.session());
 
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("./bcrypt.js");
+
 
 passport.use(
   "local-login",
@@ -144,6 +147,10 @@ app.use("/", router);
 const searchService = new SearchService(knex)
 
 app.use("/search", new SearchRouter(searchService).router())
+
+const tripshomeService = new tripsHomeService(knex)
+
+app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
 
 // non facebook app
 app.listen(8000, () => {

@@ -24,6 +24,7 @@ exports.up = function(knex) {
         table.binary('attraction_photo', 250).notNullable();
         table.timestamps(false,true);
       })
+
       .createTable("tripPlan", (table) => {
         table.increments().primary();
         table.integer('user_id').unsigned();
@@ -31,6 +32,7 @@ exports.up = function(knex) {
         table.integer('attraction_id');
         table.foreign('attraction_id').references('attractions.id');
         table.string('tripName');
+        table.string('tripInfo');
         table.timestamps(false,true);
     })
     .createTable('journals', (table) => {
@@ -47,7 +49,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
     return knex.schema.dropTable("journals")
-    .dropTable("tripPlan")
+    .dropTable("trip_plan")
     .dropTable("attractions")
     .dropTable("districts")
     .dropTable("users")

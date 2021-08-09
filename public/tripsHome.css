@@ -1,0 +1,90 @@
+.tripsHome {
+    width: 100% !important;
+    height: 100vh !important;
+    background-image: linear-gradient(
+        rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(./carousel2.jpeg);
+    background-position: center !important;
+    background-size: cover !important;
+    padding-left: 8% !important;
+    padding-right: 8% !important;
+    box-sizing: border-box !important;
+    top: 0;
+    position: absolute;
+    z-index: -999;
+}
+
+.tripHomeRow {
+    display: flex;
+    height: 88%;
+    align-items: center;
+}
+
+.tripHomeCol{
+    flex-basis: 50%;
+}
+
+.tripHomeRow h1 {
+    color: #fff;
+    font-size: 100px;
+}
+.tripHomeRow p {
+    color: #fff;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.tripButton{
+    width: 180px;
+    color: #000;
+    font-size: 12px;
+    padding: 12px 0;
+    background: #fff;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 30px;
+}
+
+.tripHomeCard {
+    width: 200px;
+    height: 230px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-position: center;
+    background-size: cover;
+    transition: transform 0.5s;
+}
+
+.card1 {
+    background-image: url(./carousel3.jpeg);
+
+}
+.card2 {
+    background-image: url(./dingding.jpeg);
+
+}
+.card3 {
+    background-image: url(./carousel2.jpeg);
+
+}
+.card4 {
+    background-image: url(./central.jpeg);
+
+}
+
+.tripHomeCard:hover{
+    transform: translateY(-10px);
+}
+
+.tripHomeCard h5{ 
+    color: black;
+    text-shadow:  0 0 5px #999;
+}   
+.tripHomeCard p{ 
+    color: black;
+    text-shadow:  0 0 5px #999;
+}   
