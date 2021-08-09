@@ -8,13 +8,15 @@ const SearchService = require('./services/searchService')
 var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
+const JournalsRouter = require("./JournalsRouter/JournalsRouter");
+const JournalsService = require("./JournalsService//JournalsService");
 
 const app = express();
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(
   session({
     secret: "Super Secret",
@@ -104,6 +106,16 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
+
+
+
+app.get("/journals", (req, res) => {
+  res.render("journals");
+})
+const journalsService = new JournalsService(knex);
+app.use("/api/journals", new JournalsRouter(journalsService).router());
+app.use("/", router);
+
 
 
 hbs.handlebars.registerHelper('eachUnique', function(array, options) {

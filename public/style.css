@@ -106,8 +106,13 @@ input:focus {
     font: 400 13.3333px Arial;
 }
 
-.modal {
-    top: 15vh;
+
+.modal{
+    top:15vh;
+}
+
+.journalsContent{
+    display: inline-block;
 }
 
 .search_secOne {
@@ -170,3 +175,4 @@ input:focus {
 .heart.red {
     color: red;
 }
+

@@ -1,6 +1,6 @@
 exports.up = function(knex) {
     return knex.schema.createTable("users", (table) => {
-        table.increments('id').primary();
+        table.increments().primary();
         table.string("email").unique();
         table.string("username");
         table.string("password");
@@ -16,7 +16,7 @@ exports.up = function(knex) {
     })
 
      .createTable('attractions', (table) => {
-        table.increments('id').primary();
+        table.increments().primary();
         table.integer('district_id').unsigned();
         table.foreign('district_id').references('districts.id')
         table.string('attraction_name').unique();
@@ -25,7 +25,7 @@ exports.up = function(knex) {
         table.timestamps(false,true);
       })
       .createTable("tripPlan", (table) => {
-        table.increments('id').primary();
+        table.increments().primary();
         table.integer('user_id').unsigned();
         table.foreign('user_id').references('users.id');
         table.integer('attraction_id');
@@ -34,7 +34,7 @@ exports.up = function(knex) {
         table.timestamps(false,true);
     })
     .createTable('journals', (table) => {
-        table.increments('id').primary();
+        table.increments().primary();
         table.integer('user_id').unsigned();
         table.foreign('user_id').references('users.id');
         table.integer('district_id').unsigned();

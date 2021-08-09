@@ -1,3 +1,5 @@
+const { default: knex } = require("knex");
+
 module.exports = (express, passport) => {
 
   const router = express.Router();
