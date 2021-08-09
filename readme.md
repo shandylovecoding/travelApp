@@ -1,15 +1,15 @@
-#TravelApp
+# TravelApp
 This is the Hong Kong Travels website project.
 We've used Node.JS, Knex.JS and Postgres for the backend,
 and Bootstrap and Express-Handlebars on the frontend.
 
 ##Functional Components of the Project
-⋅⋅* Login
-⋅⋅* Search for Destination
-⋅⋅* Trip Planning and Bookmarks
-⋅⋅* Trip Review
+* Login
+* Search for Destination
+* Trip Planning and Bookmarks
+* Trip Review
 
-##How to setup the project
+## How to setup the project
 Knex Configuration:
 In order for your Knex migrations to function correctly,
 1. be sure to setup your local project .env file with your own personal host, user, password and database name information. 
