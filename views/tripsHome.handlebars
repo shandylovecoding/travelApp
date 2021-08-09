@@ -1,3 +1,6 @@
+
+    
+
 <section class="tripsHome">
 
 
@@ -11,39 +14,16 @@
             <button class="tripButton" type="button">Create Trip</button>
         </div>
         <div class="tripHomeCol">
+        {{#each content}}
             <div class="tripHomeCard card1">
-                <h5>hk</h5>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit tempore repudiandae, dicta labore,
-                    maxime illo veniam soluta excepturi, inventore corporis enim quam asperiores beatae quas pariatur.
-                    Dolor necessitatibus voluptatum quibusdam.</p>
-                    
+                <h5>{{name}}</h5>
+                <p>{{description}}</p>
             </div>
-            <div class="tripHomeCard card2">
-                <h5>hkdream</h5>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit tempore repudiandae, dicta labore,
-                    maxime illo veniam soluta excepturi, inventore corporis enim quam asperiores beatae quas pariatur.
-                    Dolor necessitatibus voluptatum quibusdam.</p>
-
-            </div>
-            <div class="tripHomeCard card3">
-                <h5>hkfun</h5>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit tempore repudiandae, dicta labore,
-                    maxime illo veniam soluta excepturi, inventore corporis enim quam asperiores beatae quas pariatur.
-                    Dolor necessitatibus voluptatum quibusdam.</p>
-
-            </div>
-            <div class="tripHomeCard card4">
-                <h5>hkcool</h5>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit tempore repudiandae, dicta labore,
-                    maxime illo veniam soluta excepturi, inventore corporis enim quam asperiores beatae quas pariatur.
-                    Dolor necessitatibus voluptatum quibusdam.</p>
-
-            </div>
+            {{/each}}
             
-            </div>
-        </div>
     </div>
 
 
 
 </section>
+

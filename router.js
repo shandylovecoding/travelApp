@@ -52,9 +52,7 @@ module.exports = (express, passport) => {
     res.redirect("/");
   });
 
-  router.get('/tripsHome', (req, res) => {
-    res.render('tripsHome')
-  })
+
   return router
 }
 
