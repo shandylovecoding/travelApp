@@ -123,7 +123,6 @@ hbs.handlebars.registerHelper('eachUnique', function(array, options) {
     }
   }
   // return the template compiled
-  console.log("buffer",buffer);
   return buffer;
 });
 

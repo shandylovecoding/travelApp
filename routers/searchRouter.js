@@ -10,6 +10,8 @@ class SearchRouter {
         let router = express.Router();
     
         router.get("/", this.get.bind(this));
+        router.get("/search", this.getsearch.bind(this));
+
     
         return router;
       }
@@ -21,8 +23,20 @@ class SearchRouter {
             return this.searchService.list(title)
                 .then((content)=> {
                     console.log(4);
-                    res.render('search',{content:content});
-                    console.log("content",content);
+                    return res.render('search',{content:content});
+                    
+                    console.log(5);
+                })
+                .catch((err)=> res.status(500).json(err));
+        };
+        getsearch(req,res) {
+            console.log(2);
+            var title = req.query.title;
+            console.log(title);
+            return this.searchService.list(title)
+                .then((content)=> {
+                    console.log(4);
+                    res.json(content);
                     console.log(5);
                 })
                 .catch((err)=> res.status(500).json(err));
