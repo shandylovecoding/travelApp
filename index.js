@@ -6,13 +6,15 @@ const handlebars = require("express-handlebars");
 
 
 const router = require("./router.js")(express, passport);
+const JournalsRouter = require("./JournalsRouter/JournalsRouter");
+const JournalsService = require("./JournalsService//JournalsService");
 
 const app = express();
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(
   session({
     secret: "Super Secret",
@@ -36,18 +38,26 @@ const bcrypt = require("./bcrypt.js");
 
 passport.use(
   "local-login",
-  new LocalStrategy(async (email, password, done) => {
+  new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+  },async (email, password, done) => {
     try {
+      console.log("email,pw",email,password);
       console.log("Logging in~~");
       let users = await knex("users").where({ email: email });
       if (users.length == 0) {
+        console.log("Incorrect User");
         return done(null, false, { message: "Incorrect User" });
       }
+
       let user = users[0];
       let result = await bcrypt.checkPassword(password, user.password);
       if (result) {
+        console.log("res",result);
         return done(null, user);
       } else {
+        console.log("Incorrect username or password");
         return done(null, false, { message: "Incorrect username or password" });
       }
     } catch (err) {
@@ -58,8 +68,13 @@ passport.use(
 
 passport.use(
   "local-signup",
-  new LocalStrategy(async (email, password, done) => {
+  new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  },async (req, email, password, done) => {
     try {
+      console.log(">>>>>",email,req.body.username, password);
       let users = await knex("users").where({ email: email });
       if (users.length > 0) {
         return done(null, false, { message: "Email in use... " });
@@ -67,12 +82,14 @@ passport.use(
       // add hash later
 
       let hash = await bcrypt.hashPassword(password);
+      console.log(hash);
 
       const newUser = {
         email: email,
+        username: req.body.username,
         password: hash,
       };
-
+      console.log("newUser",newUser);
       let userID = await knex("users").insert(newUser).returning("id");
       newUser.id = userID[0];
       done(null, newUser);
@@ -94,9 +111,12 @@ passport.deserializeUser((user, done) => {
 
 // passport facebook
 
-
+app.get("/journals", (req, res) => {
+  res.render("journals");
+})
+const journalsService = new JournalsService(knex);
+app.use("/api/journals", new JournalsRouter(journalsService).router());
 app.use("/", router);
-
 
 
 // non facebook app

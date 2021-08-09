@@ -17,7 +17,7 @@ nav{
     margin: 20px;
 }
 .carousel-caption{
-    top: 50vh;
+    top: 40vh;
 }
 h1 {
     z-index: 5;
@@ -97,4 +97,8 @@ h6 {
 
 .modal{
     top:15vh;
+}
+
+.journalsContent{
+    display: inline-block;
 }

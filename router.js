@@ -1,3 +1,5 @@
+const { default: knex } = require("knex");
+
 module.exports = (express, passport) => {
 
     const router = express.Router();
@@ -42,7 +44,7 @@ router.post(
   router.post(
     "/signup",
     passport.authenticate("local-signup", {
-      successRedirect: "/login",
+      successRedirect: "/",
       failureRedirect: "/error",
     })
   );

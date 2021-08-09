@@ -1,0 +1,14 @@
+<form id="postjournals" action="/api/journals" method="POST" enctype="multipart/form-data">
+    <textarea type="text" name="test" id="test" cols="50" rows="10"></textarea>
+     <input type="file" name="">
+     <input type="submit" value="Post">
+    
+</form>
+
+
+{{#each list}}
+<div class="journal">
+    <span class="journalsContent" data-id="{{this.id}}">{{this.content}}</span>
+    <button id="delete" class="remove btn btn-outline-primary btn-sm" data-id="{{this.id}}">Delete</button>    
+</div>
+{{/each}}
