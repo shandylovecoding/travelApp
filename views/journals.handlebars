@@ -1,4 +1,36 @@
-<div id="postJournals">
+
+
+<div class="left">
+    <div class="left-div" id="left-id">
+       
+        <div class="left-div" id="left-post-id"><img class="left-img" src="dingding.jpeg" /> <span id="left-img"> Trip 1</span></div>
+        <div class="left-div" id="left-post-id"><img class="left-img" src="carousel1.jpeg" /> <span id="left-img"> Trip 2</span></div>
+        <div class="left-div" id="left-post-id"><img class="left-img" src="carousel2.jpeg" /> <span id="left-img"> Trip 3</span></div>
+        <div class="left-div" id="left-post-id"><img class="left-img" src="central.jpeg" /> <span id="left-img"> Trip 4</span></div>
+        <div class="see-more">See More</div>
+    </div>
+</div>
+
+
+<main class="main">
+    <article id="main">
+                <article class="article1">
+                    <div class="row2" id="row2">
+                        <div class="row2"><img class="profile" src="images/profile.jpg" /></div>
+                        <form id="postForm" action="/api/journals" method="POST" enctype="multipart/form-data" >
+    <textarea class= "input2" type="text" name="post" id="post" placeholder="Post your Trip Journal here!" cols="60" rows="1"></textarea>
+     <div id="postButtons">
+                    </div>
+            
+                    <div class="up">
+                        <input type="file" name="photo">
+                         <input id= "postButton" class="btn btn-outline-dark btn-sm" type="submit" value="Post">
+                    </div>
+                </article>
+</main>
+
+
+{{!-- <div id="postJournals">
     <form id="postForm" action="/api/journals" method="POST" enctype="multipart/form-data" >
     <textarea type="text" name="post" id="post" placeholder="Post your Trip Journal here!" cols="50" rows="10"></textarea>
      <div id="postButtons">
@@ -6,7 +38,13 @@
      <input id= "postButton" class="btn btn-outline-dark btn-sm" type="submit" value="Post">
     </div>
     </form>
-</div>
+      <div class="up">
+                        <p class="up1"><img id="up" src="/public/smile.png" />Live Video</p>
+                        <p class="up1"><img id="up" src="/public/smile.png" />Photo/Video</p>
+                        <p class="up1"><img id="up" src="/public/smile.png" />Feeling/Activity</p>
+                    </div>
+</div> --}}
+
 
 <div class="container" id="journals">
     
