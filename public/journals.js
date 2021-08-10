@@ -11,6 +11,3 @@ $(() => {
             });
     });
 })
-
-var myForm = document.getElementById('postjournals');
-var formData = new FormData(myForm);

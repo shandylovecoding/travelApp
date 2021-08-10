@@ -1,29 +1,47 @@
-
-    
-
+<div id="aTrip" class="modal fade in" style="display: none;">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create Trip</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form action="/createtrip" method="post">
+                    <div class="form-group">
+                        <label>Trip Name</label>
+                        <input type="text" name="tripname" class="form-control" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Trip description</label>
+                        <input type="password" name="tripinfo" class="form-control" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-secondary btn-block btn-lg" value="Create">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="tripsHome">
-
-
-
-
-    <div class="tripHomeRow">
-        <div class="tripHomeCol">
+    <div class="tripHomeRow ">
+        <div class="tripHomeCol col-4">
             <h1>Ready To Plan Your Trip?</h1>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta quae neque quia maxime quos
                 delectus, eveniet asperiores in possimus nisi eius non. Illo quod enim hic fuga quas iure eius?</p>
-            <button class="tripButton" type="button">Create Trip</button>
+            <a data-target="#aTrip" data-toggle="modal" class="tripButton" type="button">Create Trip</a>
         </div>
-        <div class="tripHomeCol">
-        {{#each content}}
-            <div class="tripHomeCard card1">
-                <h5>{{name}}</h5>
+
+
+        <div class="tripplans">
+            {{#each content}}
+            <div class="tripHomeCard">
+                <h2>{{name}}</h2>
                 <p>{{description}}</p>
             </div>
             {{/each}}
-            
-    </div>
 
+        </div>
 
 
 </section>
-

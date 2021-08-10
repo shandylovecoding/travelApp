@@ -14,7 +14,7 @@ $(document).ready(function ()
         name: 'title',
         source: function (title, callback) {
             $.getJSON("http://localhost:8000/search/search?title=" + title, function (data) {
-                console.log(data);
+                console.log("here",data);
                 return callback(data);
             });
         },
@@ -73,15 +73,15 @@ var searchsTemplate = Handlebars.compile(
     console.log("content frontend",content);
   };
   
-$(() => {
-    axios
-      .get("/search")
-      .then((content) => {
-          console.log(content);
-        // reload(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+// $(() => {
+//     axios
+//       .get("/search")
+//       .then((content) => {
+//           console.log(content);
+//         // reload(res);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
 
-    })
+//     })

@@ -30,7 +30,7 @@ class SearchRouter {
                 .catch((err)=> res.status(500).json(err));
         };
         getsearch(req,res) {
-            console.log(2);
+            console.log(2222);
             var title = req.query.title;
             console.log(title);
             return this.searchService.list(title)

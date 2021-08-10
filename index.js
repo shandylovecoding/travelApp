@@ -147,11 +147,9 @@ app.use("/", router);
 
 
 const searchService = new SearchService(knex)
-
 app.use("/search", new SearchRouter(searchService).router())
 
 const tripshomeService = new tripsHomeService(knex)
-
 app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
 
 // non facebook app

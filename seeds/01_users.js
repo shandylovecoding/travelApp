@@ -35,9 +35,9 @@ exports.seed = function (knex) {
         {id: 1, district_name: 'Central' ,district_introduction:'When people think of Hong Kong, most imagine movies with famous skyscrapers dominating the skyline. The area widely known as Central is the major financial hub and entertainment district'
         ,district_photo:'/central.jpeg'},
         {id: 2, district_name: 'Tsim Sha Tsui',district_introduction:'Tsim Sha Tsui is one of the major tourist and shopping areas of Hong Kong. With a high concentration of hotels, retail shops and commercial offices'
-        ,district_photo:'/central.jpeg'},
+        ,district_photo:'/tsimshatsui.jpeg'},
         {id: 3, district_name: 'Causeway Bay',district_introduction:'When people think of Hong Kong, most imagine movies with famous skyscrapers dominating the skyline. The area widely known as Central is the major financial hub and entertainment district'
-        ,district_photo:'/central.jpeg'}
+        ,district_photo:'/causewaybay.jpeg'}
       ]);
     })
     .then(()=>{
@@ -79,7 +79,7 @@ exports.seed = function (knex) {
           district_id: 2,
           attraction_name: 'K11 Musea',
           attraction_introduction: 'With a name inspired by the Muses in Greek mythology.',
-          attraction_photo:'/dingding.jpeg'
+          attraction_photo:'/k11musea.jpeg'
         },
         {
           id: 6,
@@ -91,19 +91,19 @@ exports.seed = function (knex) {
         {
           id: 7,
           district_id: 2,
-          attraction_name: 'K11 Musea',
-          attraction_introduction: 'With a name inspired by the Muses in Greek mythology.',
-          attraction_photo:'/dingding.jpeg'
+          attraction_name: 'Star Ferry',
+          attraction_introduction: 'Head over to Kowloon on the must do Star Ferry ride seeing the beautiful Victoria Harbour.',
+          attraction_photo:'/starferry.jpeg'
         },
         {
           id: 8,
           district_id: 2,
-          attraction_name: 'K11 Musea',
-          attraction_introduction: 'With a name inspired by the Muses in Greek mythology.',
-          attraction_photo:'/dingding.jpeg'
+          attraction_name: 'Avenue of the Stars',
+          attraction_introduction: 'Avenue of Stars has a well AR App for me to interact with the Hong Kong famous actor and actress such as Bruce Lee',
+          attraction_photo:'/avenueofstars.jpeg'
         },
         {
-          id: 6,
+          id: 9,
           district_id: 3,
           attraction_name: 'IFC Mall',
           attraction_introduction: 'The International Finance Centre, abbreviated as IFC is a skyscraper and an integrated commercial development on the waterfront of Hong Kong Central District.',
