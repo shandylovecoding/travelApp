@@ -121,8 +121,6 @@ const journalsService = new JournalsService(knex);
 app.use("/api/journals", new JournalsRouter(journalsService).router());
 app.use("/", router);
 
-
-
 hbs.handlebars.registerHelper('eachUnique', function(array, options) {
   // this is used for the lookup
   var  dupCheck = {};
@@ -151,6 +149,7 @@ app.use("/search", new SearchRouter(searchService).router())
 
 const tripshomeService = new tripsHomeService(knex)
 app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
+
 
 // non facebook app
 app.listen(8000, () => {
