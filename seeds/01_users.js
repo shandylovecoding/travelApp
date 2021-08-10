@@ -34,7 +34,7 @@ exports.seed = function (knex) {
       return knex('districts').insert([
         {id: 1, district_name: 'Central' ,district_introduction:'When people think of Hong Kong, most imagine movies with famous skyscrapers dominating the skyline. The area widely known as Central is the major financial hub and entertainment district'
         ,district_photo:'/central.jpeg'},
-        {id: 2, district_name: 'Tsim Sha Tsui',district_introduction:'When people think of Hong Kong, most imagine movies with famous skyscrapers dominating the skyline. The area widely known as Central is the major financial hub and entertainment district'
+        {id: 2, district_name: 'Tsim Sha Tsui',district_introduction:'Tsim Sha Tsui is one of the major tourist and shopping areas of Hong Kong. With a high concentration of hotels, retail shops and commercial offices'
         ,district_photo:'/central.jpeg'},
         {id: 3, district_name: 'Causeway Bay',district_introduction:'When people think of Hong Kong, most imagine movies with famous skyscrapers dominating the skyline. The area widely known as Central is the major financial hub and entertainment district'
         ,district_photo:'/central.jpeg'}
@@ -76,6 +76,27 @@ exports.seed = function (knex) {
         },
         {
           id: 5,
+          district_id: 2,
+          attraction_name: 'K11 Musea',
+          attraction_introduction: 'With a name inspired by the Muses in Greek mythology.',
+          attraction_photo:'/dingding.jpeg'
+        },
+        {
+          id: 6,
+          district_id: 2,
+          attraction_name: 'Victoria Harbour',
+          attraction_introduction: 'The harbour is a major tourist attraction of Hong Kong. Lying in the middle of the territory`s dense urban region, the harbour is the site of annual fireworks displays and its promenades are used as gathering places for tourists and residents.',
+          attraction_photo:'/harbour.jpeg'
+        },
+        {
+          id: 7,
+          district_id: 2,
+          attraction_name: 'K11 Musea',
+          attraction_introduction: 'With a name inspired by the Muses in Greek mythology.',
+          attraction_photo:'/dingding.jpeg'
+        },
+        {
+          id: 8,
           district_id: 2,
           attraction_name: 'K11 Musea',
           attraction_introduction: 'With a name inspired by the Muses in Greek mythology.',
