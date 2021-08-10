@@ -6,6 +6,11 @@ const handlebars = require("express-handlebars");
 const fileUpload = require("express-fileupload");
 
 
+const SearchRouter = require('./routers/searchRouter')
+const SearchService = require('./services/searchService')
+const tripsHomeRouter = require('./routers/tripsHomeRouter');
+const tripsHomeService = require('./services/tripsHomeService');
+var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
 const JournalsRouter = require("./JournalsRouter/JournalsRouter");
@@ -30,7 +35,6 @@ require("dotenv").config();
 
 const knexFile = require("./knexfile").development;
 const knex = require("knex")(knexFile);
-console.log(knexFile)
 
 
 app.use(passport.initialize());
@@ -38,6 +42,7 @@ app.use(passport.session());
 
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("./bcrypt.js");
+
 
 passport.use(
   "local-login",
@@ -77,7 +82,6 @@ passport.use(
     passReqToCallback: true
   },async (req, email, password, done) => {
     try {
-      console.log(">>>>>",email,req.body.username, password);
       let users = await knex("users").where({ email: email });
       if (users.length > 0) {
         return done(null, false, { message: "Email in use... " });
@@ -85,14 +89,12 @@ passport.use(
       // add hash later
 
       let hash = await bcrypt.hashPassword(password);
-      console.log(hash);
 
       const newUser = {
         email: email,
         username: req.body.username,
         password: hash,
       };
-      console.log("newUser",newUser);
       let userID = await knex("users").insert(newUser).returning("id");
       newUser.id = userID[0];
       done(null, newUser);
@@ -112,7 +114,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// passport facebook
+
 
 app.get("/journals", (req, res) => {
   res.render("journals");
@@ -122,8 +124,40 @@ app.use("/api/journals", new JournalsRouter(journalsService).router());
 app.use("/", router);
 
 
+
+hbs.handlebars.registerHelper('eachUnique', function(array, options) {
+  // this is used for the lookup
+  var  dupCheck = {};
+  // template buffer
+  var buffer = '';
+  for( var i=0; i< array.length; i++){
+    var entry = array[i];
+    var uniqueKey = entry.name + entry.introduction + entry.photo;
+    // check if the entry has been added already
+    if(!dupCheck[uniqueKey]){
+      // here there are only unique values
+      dupCheck[uniqueKey] = true;
+      // add this in the template
+      buffer += options.fn(entry);
+    }
+  }
+  // return the template compiled
+  return buffer;
+});
+
+app.use("/", router);
+
+
+const searchService = new SearchService(knex)
+
+app.use("/search", new SearchRouter(searchService).router())
+
+const tripshomeService = new tripsHomeService(knex)
+
+app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
+
 // non facebook app
-app.listen(8080, () => {
+app.listen(8000, () => {
   console.log("Application listening to port 8080");
 });
 
