@@ -33,8 +33,10 @@ class JournalsService {
         return query.then((rows) => {
             console.log(rows)
             return rows.map((row) => {
-                var base = Buffer.from(row.photos);
-                var photo = base.toString('base64');
+                if (row.photos) {
+                    var base = Buffer.from(row.photos);
+                    var photo = base.toString('base64');
+                }
                 return {
                     id: row.id,
                     content: row.content,
