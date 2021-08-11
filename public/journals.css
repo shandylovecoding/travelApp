@@ -1,0 +1,19 @@
+#postJournals{
+    text-align: center;
+    font-size: 1rem;
+}
+#post::placeholder{
+    font-size: 1rem;
+}
+
+#postButtons{
+
+}
+
+#postButton{
+    padding: 4px 6px;
+    
+}
+.journalCol{
+    text-align: center;
+}
