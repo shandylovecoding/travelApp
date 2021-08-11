@@ -4,14 +4,19 @@ class profileService {
     }
 
     list(user){
+        let userid = this.knex
+            .from("users")
+            .select("id")
+            .where("users.username", user);
         let query = this.knex
-            .select("journals.user_id", "journals.content")
             .from("journals")
+            .select("journals.content", "journals.created_at")
             .innerJoin("users", "users.id", "journals.user_id")
-            .where("users.username", user)
-            .orderBy("journals.created_at", "desc");
+            .where("journals.user_id", userid);
+ //           .orderBy("journals.created_at", "desc");
             return query.then((rows) => {
                 return rows.map((row) => ({
+                    username: user,
                     id: row.id,
                     content:row.content,
                 }
