@@ -37,19 +37,22 @@
                 <div id="triplist{{att_id}}" class="modal fade in" style="display: none; width:400px">
                     <div class="modal-content">
                         <div class="modal-header">
-
+                           
                             <form action="/tripsHome/attraction" method="POST">
-                                <input type="text" name="attid" class="form-control" value={{att_id}} hidden></input>
+                                <input type="text" name="attid" class="form-control" value={{att_id}} ></input>
+                
                                 <input type="text" name="tripname" class="form-control" required="required"
                                     value={{trip_name}}></input>
+           
+
                                 <input type="submit" class="btn btn-secondary btn-block btn-lg" value="Create">
                             </form>
-
+                            
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                     </div>
                 </div>
-                {{/each}}
+                 {{/each}}
             </div>
         </div>
 

@@ -17,7 +17,6 @@ class tripsHomeRouter {
       }
 
     get(req,res) {
-        console.log("get")
             return this.tripshomeService.list()
                 .then((content)=> {
                     res.render('tripsHome',{content:content});
