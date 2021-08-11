@@ -1,16 +1,23 @@
-
-<form id="postjournals" action="/api/journals" method="POST" enctype="multipart/form-data">
-    <textarea type="text" name="test" id="test" cols="50" rows="10"></textarea>
-     <input type="file" name="">
-     <input type="submit" value="Post">
-    
-</form>
-
-
-{{#each list}}
-<div class="journal">
-    <span class="journalsContent" data-id="{{this.id}}">{{this.content}}</span>
-    <button id="delete" class="remove btn btn-outline-primary btn-sm" data-id="{{this.id}}">Delete</button>    
+<div id="postJournals">
+    <form id="postForm" action="/api/journals" method="POST" enctype="multipart/form-data" >
+    <textarea type="text" name="post" id="post" placeholder="Post your Trip Journal here!" cols="50" rows="10"></textarea>
+     <div id="postButtons">
+     Attach Photo: <input type="file" name="photo">
+     <input id= "postButton" class="btn btn-outline-dark btn-sm" type="submit" value="Post">
+    </div>
+    </form>
 </div>
-{{/each}}
 
+<div class="container" id="journals">
+    
+    {{#each list}}
+    <div class="journal row">
+        <div class="col-12 journalCol">
+        <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt="">
+        <span class="journalsContent" data-id="{{this.id}}">{{this.content}}</span>
+        <button id="delete" class="remove btn btn-outline-dark btn-sm" data-id="{{this.id}}">Delete</button>    
+        </div>
+    </div>
+    {{/each}}
+    
+</div 

@@ -3,6 +3,9 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const handlebars = require("express-handlebars");
+const fileUpload = require("express-fileupload");
+
+
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
 const tripsHomeRouter = require('./routers/tripsHomeRouter');
@@ -12,10 +15,11 @@ const ProfileService = require("./services/profileService");
 var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
-const JournalsRouter = require("./JournalsRouter/JournalsRouter");
-const JournalsService = require("./JournalsService//JournalsService");
+const JournalsRouter = require("./routers/JournalsRouter");
+const JournalsService = require("./services/JournalsService");
 
 const app = express();
+app.use(fileUpload());
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static('public'))
