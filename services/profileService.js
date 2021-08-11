@@ -3,17 +3,18 @@ class profileService {
         this.knex = knex;
     }
 
-    list(){
+    list(userid){
         let query = this.knex
-            .select("")
+            .select("*")
             .from("journals")
+            .where("user_id", userid)
             
             return query.then((rows) => {
-                return rows.map((row) => {
-                })
-            })
-    }
-
+                return rows.map((row) => (({
+                    id: row.id,
+                }
+                ))
+                )});
 }
-
+}
 module.exports = profileService;

@@ -17,7 +17,7 @@ class ProfileRouter {
     get(req,res) {{
         return this.profileService.list()
             .then((content) => {
-                res.render("profile", {content:content});
+                res.render("view", {layout:"profile"});
             })
             .catch((err) => {
                 res.status(500).json(err);
