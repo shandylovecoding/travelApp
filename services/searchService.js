@@ -9,9 +9,9 @@ class searchService {
       console.log(3);
       let query = this.knex
       .select("districts.id","districts.district_name","districts.district_introduction","districts.district_photo",
-      "attractions.attraction_name","attractions.attraction_introduction","attractions.attraction_photo"
+      "attractions.id as attraction_id","attractions.attraction_name","attractions.attraction_introduction","attractions.attraction_photo"
       ,"journals.content","users.username"
-      ,"trip_plan.tripName"
+      ,"trip_plan.tripName","trip_plan.id"
       )
       .from("districts")
       .innerJoin("attractions","districts.id","attractions.district_id")
@@ -27,6 +27,7 @@ class searchService {
           name:row.district_name,
           introduction:row.district_introduction,
           photo:row.district_photo,
+          att_id:row.attraction_id,
           att_name:row.attraction_name,
           att_intro:row.attraction_introduction,
           att_photo:row.attraction_photo,
