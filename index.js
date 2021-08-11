@@ -162,7 +162,7 @@ const profileService = new ProfileService(knex);
 app.use("/profile", new ProfileRouter(profileService).router());
 
 // non facebook app
-app.listen(8000, () => {
+app.listen(8080, () => {
   console.log("Application listening to port 8080");
 });
 
