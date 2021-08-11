@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar {
+    padding: 10px 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-link {
+    color: hsl(0, 0%, 90%) !important;
+}
+
+.logo {
+    margin: 20px;
+}
+
+.carousel {
+    position: absolute;
+    z-index: -999;
+}
+
+.carousel-caption {
+    top: 40vh;
+}
+
+.carousel-caption h1 {
+    z-index: 5;
+    font-family: "Nothing You Could Do";
+    height: auto;
+    width: auto;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    line-height: 7px;
+    letter-spacing: -1px;
+    font-weight: 400;
+    font-size: 80px;
+    transform-origin: 50% 50%;
+    transform: translate(0px, 0px);
+    opacity: 1;
+    visibility: visible;
+}
+
+.logo h2 {
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    font-size: 60px;
+    font-family: "Nothing You Could Do";
+}
+
+h6 {
+    z-index: 6;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    height: auto;
+    width: auto;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: inherit;
+    line-height: 7px;
+    letter-spacing: 1.2304px;
+    font-weight: 400;
+    font-size: 12px;
+    transform-origin: 50% 50%;
+    transform: translate(0px, 0px);
+    opacity: 1;
+    visibility: visible;
+}
+
+.searchform {
+    border-radius: 25px;
+    padding: 10px 20px 10px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+    -webkit-appearance: none;
+    color: #fff;
+}
+
+.searcher {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: white;
+
+}
+
+input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: hsl(0, 0%, 80%);
+    font: 400 13.3333px Arial;
+}
+
+
+.modal{
+    top:15vh;
+}
+
+.journalsContent{
+    display: inline-block;
+}
+
+.search_secOne {
+    position: absolute;
+    top: 0;
+    z-index: -999;
+    width: 1460px;
+    height: 100vh;
+    padding: 30vh 15% 0;
+}
+
+.district_title h1 {
+    font-size: 70px;
+
+}
+
+.district_intro {
+    width: 100%;
+    padding: 150px;
+    text-align: end;
+}
+
+.district_intro h3 span {
+    background-color: #fff;
+    line-height: 1.75;
+}
+
+.search_secAtt {
+    top: 80vh;
+}
+
+.attraction_container {
+    padding-right: 100px;
+    padding-left: 100px;
+
+}
+
+.row {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    grid-column-gap: 10px;
+}
+
+.card {
+    padding: 10px
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.heart {
+    color: grey;
+    font-size: 30px;
+}
+
+.heart.red {
+    color: red;
+}
+
