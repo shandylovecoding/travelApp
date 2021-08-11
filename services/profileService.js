@@ -7,7 +7,8 @@ class profileService {
         let userid = this.knex
             .from("users")
             .select("id")
-            .where("users.username", user);
+            .where("users.username", user)
+            .first();
         let query = this.knex
             .from("journals")
             .select("journals.content", "journals.created_at")
