@@ -35,7 +35,7 @@ class tripsHomeRouter {
 
     postAttraction(req,res){
             console.log("post attraction")
-            this.tripshomeService.addAttractions(req.body.tripname,2).then(() => {
+            this.tripshomeService.addAttractions(req.body.tripname,req.body.attid).then(() => {
                 return res.redirect("/search")
             })
         }
