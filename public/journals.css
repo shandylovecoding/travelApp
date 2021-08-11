@@ -1,19 +1,211 @@
-#postJournals{
-    text-align: center;
-    font-size: 1rem;
-}
-#post::placeholder{
-    font-size: 1rem;
-}
 
-#postButtons{
-
-}
 
 #postButton{
     padding: 4px 6px;
+    margin-left: 200px;
     
 }
 .journalCol{
     text-align: center;
 }
+
+.left {
+    position: fixed;
+    margin-top: 40px;
+    z-index: 0;
+}
+@media screen and (max-width: 1180px) {
+    .left {
+        display: none;
+}
+}
+
+.left-div {
+    margin: 12px 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+#left-post-id{
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+
+
+.left-img {
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+}
+
+#left-img{
+    margin-left: 10px;
+    font-size: 15px;
+    margin-top: 2px;
+}
+
+.see-more {
+    margin-left: 10px;
+    background-color: rgb(189, 186, 186);
+    width: 195px;
+    height: 25px;
+    padding-left: 50px;
+    /* padding-top: 5px; */
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+}
+
+.see-more:hover {
+    background-color: rgb(211, 211, 211);
+    border-radius: 5px;
+}
+
+
+
+
+
+@media screen and (min-width: 1180px) {
+    .main {
+        max-width: 570px;
+        margin: auto;
+}
+}
+
+
+
+.row2 {
+    display: flex;
+    margin-right: 5px;
+}
+
+#row2 {
+    border-bottom: 1px solid rgb(231, 229, 229);
+}
+
+.input2 {
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-top: 4px;
+    border: 0px;
+    background-color: rgb(231, 229, 229);
+    width: 500px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.up {
+    display: flex;
+    width: 460px;
+}
+
+.up1 {
+    display: flex;
+    margin-right: 15px;
+    width: 100%;
+    cursor: pointer;
+}
+
+#up {
+    height: 15px;
+    margin-right: 5px;
+}
+
+
+  
+  body {
+    background-image: url(hk.jpg);
+    background-attachment: fixed ;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300
+}
+
+.card {
+    border: none
+}
+
+.ellipsis {
+    color: #a09c9c
+}
+
+hr {
+    color: #a09c9c;
+    margin-top: 4px;
+    margin-bottom: 8px
+}
+
+.muted-color {
+    color: #a09c9c;
+    font-size: 13px
+}
+
+.ellipsis i {
+    margin-top: 3px;
+    cursor: pointer
+}
+
+.icons i {
+    font-size: 25px
+}
+
+.icons .fa-heart {
+    color: red
+}
+
+.icons .fa-smile-o {
+    color: yellow;
+    font-size: 29px
+}
+
+.rounded-image {
+    border-radius: 50% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px
+}
+
+.name {
+    font-weight: 600
+}
+
+.comment-text {
+    font-size: 12px
+}
+
+.status small {
+    margin-right: 10px;
+    color: blue
+}
+
+.form-control {
+    border-radius: 26px
+}
+
+.comment-input {
+    position: relative
+}
+
+.fonts {
+    position: absolute;
+    right: 13px;
+    top: 8px;
+    color: #a09c9c
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none
+}
+
+
+
+

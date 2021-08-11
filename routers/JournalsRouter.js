@@ -39,6 +39,7 @@ class JournalsRouter {
         delete(req, res) {
             console.log('delete')
             return this.journalsService.remove(req.params.id).then(() => {
+                console.log('senfing back delete')
                 return res.send('deleted');
             })
         }
