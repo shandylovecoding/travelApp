@@ -1,0 +1,42 @@
+body {
+    background-image:url("./carousel1.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+}
+
+#profilePic img {
+    width: 100px;
+    height: 100px;
+    display: flex;
+}
+
+#profileTopName {
+    display: flex;
+}
+
+.container {
+    background: white;
+}
+
+.profileTopBar {
+    display: flex;
+}
+
+.profileLeftBar {
+    display: block;
+}
+
+.timeline {
+    
+}
+
+div {
+    border-width: 1px;
+    border-color: black;
+    border-style: inset;
+    border-radius: 20px;
+}
+
+h1 {
+    color: black;
+}
