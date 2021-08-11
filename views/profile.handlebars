@@ -3,30 +3,33 @@
 
 
 
-
 <!--Container for the top bar with profile name/picture/cover photo-->
 <div class="profileTopBar">
-<p>yoyoyoyo</p>
+    <div id="profilePic">
+        <img src="default.png">
+    </div>
+    <div id="profileTopName">
+        <h1>{{user}}</h1>
+    </div>
 </div>
 
 
 <!--Div for country of origin and join date-->
 <div class="profileLeftBar">
-
+    <p>Member Since:{{user.created_at}}</p>
 </div>
+
+
 
 
 <!--Container that displays the user's timeline, in reverse chronological order-->
 <div class="timeline">
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-    <li>4</li>
+    {{#each journals}}
+    <div class="post">
+        <span class="postContent"><textarea data-id="{{id}}">{{content}}</textarea></span>
+    </div>
+    {{/each}}
 </div>
 
-
-
-
-
-
+<!--Ending Div-->
 </div>
