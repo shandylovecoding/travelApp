@@ -158,6 +158,9 @@ app.use("/search", new SearchRouter(searchService).router())
 //PROFILE ROUTER
 
 const profileService = new ProfileService(knex);
+app.get("/profile", (req, res) => {
+  res.render("profile");
+})
 app.use("/profile", new ProfileRouter(profileService).router());
 
 // non facebook app
