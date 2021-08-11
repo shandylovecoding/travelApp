@@ -2,7 +2,6 @@ $(document).ready(function() {
     $('.heart').on('click', function(e) {
         $(e.currentTarget).toggleClass("red");
     });
-    
 })
 
 
@@ -18,13 +17,14 @@ $(document).ready(function ()
                 return callback(data);
             });
         },
-        limit:4
+        limit:1
     });
 });
 
 
 var searchsTemplate = Handlebars.compile(
     `
+    
     {{#eachUnique content}}
 
 
@@ -70,7 +70,6 @@ var searchsTemplate = Handlebars.compile(
   const reload = (content) => {
     // console.log(8);
     $("#searchs").html(searchsTemplate({content: content}));
-    console.log("content frontend",content);
   };
   
 // $(() => {

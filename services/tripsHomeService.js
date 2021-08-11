@@ -8,7 +8,6 @@ class tripsHomeService {
       .from("trip_plan")
     console.log(query)
     return query.then((rows) => {
-      console.log("rows", rows);
 
       return rows.map((row) => ({
         id: row.id,
@@ -19,28 +18,32 @@ class tripsHomeService {
     });
   }
 
-  addTrip(user_id, tripName, tripInfo) {
+  async addTrip(user_id, tripName, tripInfo) {
     var newTrip = {
       user_id: user_id,
       tripName: tripName,
       tripInfo: tripInfo
     }
-    return this.knex.insert(newTrip).into("trip_plan");
+    var newTripID = await this.knex.insert(newTrip).into("trip_plan").returning('id');
+    newTrip.id = newTripID;
+    console.log(newTrip.id);
   }
 
-  addAttractions(trip_id, attraction_id) {
-      let query = this.knex.select("attraction_id").from("trip_plan").where("id", trip_id);
-      return query.then((results) => {
-        if (!results[0].attraction_id) {
-          this.knex("trip_plan").where("id", trip_id).update({
-            attraction_id: [attraction_id]
-          })
-        } else {
-          this.knex("trip_plan").where("id", trip_id).update({
-            attraction_id: results[0].attraction_id.push(attraction_id)
-          })
-        }
-      })
+async addAttractions(trip_name, attraction_id) {
+    let query = await this.knex
+    .select("trip_plan.id")
+    .from("trip_plan")
+    .innerJoin("trip_plan_attraction","trip_plan.id","trip_plan_attraction.trip_plan_id")
+    .where("tripName", trip_name);
+    const newAttr = {
+      attraction_id: attraction_id,
+      trip_plan_id:query[0].id,
     }
+    console.log(newAttr);
+   
+      let newAttrId = await this.knex.insert(newAttr).into("trip_plan_attraction").returning("id");
+      newAttr.id = newAttrId[0]
+    
   }
+}
       module.exports = tripsHomeService;

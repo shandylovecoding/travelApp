@@ -1,4 +1,5 @@
 <div id="searchs">
+
 {{#eachUnique content}}
 
 <section class="search_secOne" style="background: url({{photo}}) no-repeat center center;background-size: cover;">
@@ -24,7 +25,7 @@
                     <span>
                         <h5>{{att_name}}</h5>
                     </span>
-                    <span><i class="fa fa-heart heart"></i></span>
+                    <span><a data-target="#triplist" data-toggle="modal"><i class="fa fa-heart heart"></i></a></span>
                 </div>
                 <img src={{att_photo}} class="card-img-top" width="200px" height="150px" alt="...">
                 <div class="card-body">
@@ -56,4 +57,18 @@
             {{/eachUnique}}
         </div>
 </section>
+
+<div id="triplist" class="modal fade in" style="display: none; width:400px" >
+     <div class="modal-content">
+         {{#eachUnique content}}
+            <div class="modal-header">
+                <form action="/tripsHome/attraction" method="POST">
+                 <input type="text" name="tripname" class="form-control" required="required" value={{trip_name}}>{{trip_name}}</input>
+                <input type="submit" class="btn btn-secondary btn-block btn-lg" value="Create">
+                </form>
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+        {{/eachUnique}}
+</div>
 </div>

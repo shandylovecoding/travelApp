@@ -11,11 +11,13 @@ class searchService {
       .select("districts.id","districts.district_name","districts.district_introduction","districts.district_photo",
       "attractions.attraction_name","attractions.attraction_introduction","attractions.attraction_photo"
       ,"journals.content","users.username"
+      ,"trip_plan.tripName"
       )
       .from("districts")
       .innerJoin("attractions","districts.id","attractions.district_id")
       .innerJoin("journals","districts.id","journals.district_id")
       .innerJoin("users","users.id","journals.user_id")
+      .innerJoin("trip_plan","users.id","trip_plan.user_id")
       .where("districts.district_name",'like', `%${title}%`)
       console.log(query);
       return query.then((rows)=>{
@@ -29,7 +31,8 @@ class searchService {
           att_intro:row.attraction_introduction,
           att_photo:row.attraction_photo,
           user_name:row.username,
-          jour_content:row.content
+          jour_content:row.content,
+          trip_name:row.tripName
         }
         ));
        

@@ -117,9 +117,20 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('trip_plan').insert([
-        {id: 1, user_id: 1, attraction_id: 1, tripName: 'hk', tripInfo: 'what to eat?'},
         {id: 2, user_id: 2, attraction_id: 2, tripName: 'hkdream', tripInfo: 'where to go?'},
+        {id: 1, user_id: 1, attraction_id: 1, tripName: 'hk', tripInfo: 'what to eat?'},
         {id: 3, user_id: 3, attraction_id: 3, tripName: 'hkfun', tripInfo: 'What to do?'}
+      ]);
+    })
+    .then(()=>{
+      return knex('trip_plan_attraction').del();
+    })
+    .then(function () {
+      // Inserts seed entries
+      return knex('trip_plan_attraction').insert([
+        {id: 1, trip_plan_id:1, attraction_id: 1},
+        {id: 2, trip_plan_id:1, attraction_id: 2},
+        {id: 3, trip_plan_id:1, attraction_id: 3}   
       ]);
     })
     .then(()=>{

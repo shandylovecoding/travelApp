@@ -10,8 +10,8 @@ const tripsHomeService = require('./services/tripsHomeService');
 var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
-const JournalsRouter = require("./JournalsRouter/JournalsRouter");
-const JournalsService = require("./JournalsService//JournalsService");
+const JournalsRouter = require("./routers/JournalsRouter");
+const JournalsService = require("./services//JournalsService");
 
 const app = express();
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
