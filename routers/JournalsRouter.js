@@ -17,6 +17,7 @@ class JournalsRouter {
     get(req, res) {
         console.log("get")
         return this.journalsService.list("jack1").then((results) => {
+            //console.log('results>>',results);
             return res.render('journals', {
                 list: results
             });
@@ -40,6 +41,7 @@ class JournalsRouter {
         delete(req, res) {
             console.log('delete')
             return this.journalsService.remove(req.params.id).then(() => {
+                console.log('senfing back delete')
                 return res.send('deleted');
             })
         }
