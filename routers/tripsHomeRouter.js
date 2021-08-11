@@ -41,6 +41,7 @@ class tripsHomeRouter {
         this.tripshomeService.addAttractions(req.body.tripname, 2).then(() => {
             return res.redirect("/search")
         })
+
     }
     deleteTrip(req, res) {
         console.log("delete trip")
@@ -60,3 +61,4 @@ class tripsHomeRouter {
 
 
 module.exports = tripsHomeRouter;
+

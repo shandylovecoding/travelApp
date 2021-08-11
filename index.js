@@ -3,9 +3,6 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const handlebars = require("express-handlebars");
-const fileUpload = require("express-fileupload");
-
-
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
 const tripsHomeService = require('./services/tripsHomeService');
@@ -15,13 +12,14 @@ var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
 const JournalsRouter = require("./routers/JournalsRouter");
-const JournalsService = require("./services/JournalsService");
+const JournalsService = require("./services//JournalsService");
 
 const app = express();
-app.use(fileUpload());
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static('public'))
+app.use(express.static('public/assets'))
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(
@@ -124,8 +122,6 @@ const journalsService = new JournalsService(knex);
 app.use("/api/journals", new JournalsRouter(journalsService).router());
 app.use("/", router);
 
-
-
 hbs.handlebars.registerHelper('eachUnique', function(array, options) {
   // this is used for the lookup
   var  dupCheck = {};
@@ -150,18 +146,22 @@ app.use("/", router);
 
 
 const searchService = new SearchService(knex)
-
 app.use("/search", new SearchRouter(searchService).router())
+
+
+const tripshomeService = new tripsHomeService(knex)
+app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
 
 
 
 //PROFILE ROUTER
-
 const profileService = new ProfileService(knex);
 app.get("/profile", (req, res) => {
   res.render("profile");
 })
 app.use("/profile", new ProfileRouter(profileService).router());
+
+
 
 // non facebook app
 app.listen(8080, () => {

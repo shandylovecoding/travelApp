@@ -8,7 +8,6 @@ class tripsHomeService {
       .from("trip_plan")
     console.log(query)
     return query.then((rows) => {
-      console.log("rows", rows);
 
       return rows.map((row) => ({
         id: row.id,
@@ -27,6 +26,7 @@ class tripsHomeService {
     }
     var newTripID = await this.knex.insert(newTrip).into("trip_plan").returning('id');
     newTrip.id = newTripID;
+
   }
 
   // async addAttractions(trip_name, attraction_id) {
@@ -75,3 +75,4 @@ class tripsHomeService {
   }
 }
   module.exports = tripsHomeService;
+

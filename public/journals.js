@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(() => {
     $(".remove").on("click", (event) => {
         console.log($(event.currentTarget).data("id"))
@@ -12,6 +13,8 @@ $(() => {
             });
     });
 })
+<<<<<<< HEAD
+=======
 // var photo = document.getElementById('photo')
 // var myForm = document.getElementById('postjournals');
 // var formData = new FormData(myForm);
@@ -29,3 +32,20 @@ $(() => {
 // })
 
 // })
+>>>>>>> origin/main
+=======
+$(() => {
+    $(".remove").on("click", (event) => {
+        console.log($(event.currentTarget).data("id"))
+        axios.delete("/api/journals/" + $(event.currentTarget).data("id"))
+            .then((res) => {
+                console.log(res);
+                window.location = '/api/journals';
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    });
+})
+
+>>>>>>> b2b817bed03f7a7e64148149201401c2b44a98bb
