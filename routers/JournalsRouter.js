@@ -15,18 +15,18 @@ class JournalsRouter {
     }
 
     get(req, res) {
-        console.log("get")
-        return this.journalsService.list("jack1").then((results) => {
+        console.log("get for user>>", req.auth.user)
+        return this.journalsService.list(req.auth.user).then((results) => {
             return res.render('journals', {
                 list: results
             });
         });
     }
     post(req, res) {
-        console.log('post')
+        console.log('post for user>>', req.auth.user)
         if (req.files) {
             console.log('has photo')
-            return this.journalsService.add(req.body.post, req.files.photo.data).then(() => {
+            return this.journalsService.add(req.auth.user, req.body.post, req.files.photo.data).then(() => {
                 return res.redirect("/api/journals");
             })
         } else {
