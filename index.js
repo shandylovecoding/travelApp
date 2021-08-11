@@ -8,7 +8,6 @@ const fileUpload = require("express-fileupload");
 
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
-const tripsHomeRouter = require('./routers/tripsHomeRouter');
 const tripsHomeService = require('./services/tripsHomeService');
 const ProfileRouter = require("./routers/profileRouter");
 const ProfileService = require("./services/profileService");
@@ -153,10 +152,6 @@ app.use("/", router);
 const searchService = new SearchService(knex)
 
 app.use("/search", new SearchRouter(searchService).router())
-
-const tripshomeService = new tripsHomeService(knex)
-
-app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
 
 
 
