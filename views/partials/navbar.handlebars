@@ -28,6 +28,11 @@
             {{else}}
             <div class="collapse navbar-collapse  d-flex justify-content-around" id="navbarNav">
                 <ul class="navbar-nav">
+                    <!--If logged out the profile link will redirect to the login page-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fLogin" data-toggle="modal">Profile</a>
+                    </li>
+                    <!--Separation for possible removal? Keep if it's ok, delete if it doesn't work-->
                     <li class="nav-item">
                         <a class="nav-link" href="/tripsHome" >Trips</a>
                     </li>

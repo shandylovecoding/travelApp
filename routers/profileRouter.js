@@ -14,18 +14,27 @@ class ProfileRouter {
         return router;
     }
 
-    get(req,res) {{
-        let userid = req.params.id;
-        console.log(userid);
-        return this.profileService
-        .list(userid)
-        .then((data) => {
-            res.render(data);
+    get(req,res) {
+        let user = req.params.id;
+        console.log(user);
+
+        if(typeof user != "undefined"){
+            return this.profileService
+                .list(user)
+                .then((post) => {
+                    res.render("profile", {post:post});
+                 })
+                .catch((err) => {
+                    res.status(500).json(err);
+                 });
+        } else {
+            res.status(500);
+            res.render("error", {
+                message: "Invalid ID. Please go back and login or contact site administrators"
             })
-        .catch((err) => {
-            res.status(500).json(err);
-        })
-    }};
+        }
+
+    };
 }
 
 module.exports = ProfileRouter;
