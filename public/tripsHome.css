@@ -5,6 +5,7 @@
         rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(./carousel2.jpeg);
     background-position: center !important;
     background-size: cover !important;
+    background-attachment: fixed;
     padding-left: 8% !important;
     padding-right: 8% !important;
     box-sizing: border-box !important;
