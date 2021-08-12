@@ -1,10 +1,12 @@
 const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const upload = require('express-fileupload');
 const passport = require("passport");
 const handlebars = require("express-handlebars");
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
+const tripsHomeRouter = require('./routers/tripsHomeRouter');
 const tripsHomeService = require('./services/tripsHomeService');
 const ProfileRouter = require("./routers/profileRouter");
 const ProfileService = require("./services/profileService");
@@ -22,6 +24,7 @@ app.use(express.static('public/assets'))
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(upload())
 app.use(
   session({
     secret: "Super Secret",
@@ -95,6 +98,7 @@ passport.use(
         password: hash,
       };
       let userID = await knex("users").insert(newUser).returning("id");
+      console.log(userID);
       newUser.id = userID[0];
       console.log(newUser);
       done(null, newUser);
@@ -116,12 +120,8 @@ passport.deserializeUser((user, done) => {
 
 
 
-app.get("/journals", (req, res) => {
-  res.render("journals");
-})
-const journalsService = new JournalsService(knex);
-app.use("/api/journals", new JournalsRouter(journalsService).router());
-app.use("/", router);
+
+
 
 hbs.handlebars.registerHelper('eachUnique', function(array, options) {
   // this is used for the lookup
@@ -145,6 +145,8 @@ hbs.handlebars.registerHelper('eachUnique', function(array, options) {
 
 app.use("/", router);
 
+const journalsService = new JournalsService(knex);
+app.use("/journals", new JournalsRouter(journalsService).router());
 
 const searchService = new SearchService(knex)
 app.use("/search", new SearchRouter(searchService).router())

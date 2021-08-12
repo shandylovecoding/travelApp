@@ -8,13 +8,11 @@ class tripsHomeService {
       .from("trip_plan")
       .innerJoin("users","users.id","trip_plan.user_id")
       .where("users.username",username)
-console.log("queryqueryquery",query);
     return query.then((rows) => {
       return rows.map((row) => ({
         id: row.id,
         name: row.tripName,
         description: row.tripInfo,
-
       }));
 
     });

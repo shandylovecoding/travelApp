@@ -38,24 +38,6 @@ class tripsHomeRouter {
             })
         }
 
-    get(req, res) {
-        console.log("get")
-        return this.tripshomeService.list()
-            .then((content) => {
-                res.render('tripsHome', {
-                    content: content
-                });
-                console.log("content", content);
-            })
-            .catch((err) => res.status(500).json(err));
-    };
-
-    postTrip(req, res) {
-        console.log("post trip")
-        this.tripshomeService.addTrip(2, req.body.tripname, req.body.tripinfo).then(() => {
-            return res.redirect("/tripsHome")
-        })
-    }
 
     postAttraction(req, res) {
         console.log("post attraction")
