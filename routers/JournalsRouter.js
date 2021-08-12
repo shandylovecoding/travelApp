@@ -12,9 +12,15 @@ class JournalsRouter {
 
     router() {
         let router = express.Router();
+<<<<<<< HEAD
         router.get("/", isLoggedIn, this.get.bind(this));
         router.post("/", isLoggedIn, this.post.bind(this));
         router.delete("/:id",isLoggedIn, this.delete.bind(this));
+=======
+        router.get("/", /*isLoggedIn,*/ this.get.bind(this));
+        router.post("/", this.post.bind(this));
+        router.delete("/:id", this.delete.bind(this));
+>>>>>>> origin/main
         return router;
     }
 
