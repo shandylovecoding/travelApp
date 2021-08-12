@@ -24,13 +24,13 @@
 
 <!--Container that displays the user's timeline, in reverse chronological order-->
 <div class="timeline">
-    {{#each content}}
+    {{#each post}}
     <div class="post panel-default">
        <div class="panel-body">
-           {{content}}
+           {{this.content}}
            </div>
     </div>
-    <div class="panel-footer">{{created_at}}</div>
+    <div class="panel-footer">{{this.created_at}}</div>
     {{/each}}
 </div>
 

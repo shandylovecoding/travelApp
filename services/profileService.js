@@ -4,11 +4,12 @@ class profileService {
     }
 
     list(user){
-        let userid = this.knex
-            .from("users")
-            .select("id")
-            .where("users.username", user)
-            .first();
+    //    let userid = this.knex
+    //        .from("users")
+     //       .select("id")
+    //        .where("users.username", "jack1");
+
+    let userid = 1;
         let query = this.knex
             .from("journals")
             .select("journals.content", "journals.created_at")
