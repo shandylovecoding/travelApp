@@ -2,20 +2,23 @@ class tripsHomeService {
   constructor(knex) {
     this.knex = knex
   }
-  list() {
+  list(username) {
     let query = this.knex
       .select("trip_plan.id", "trip_plan.tripName", "trip_plan.tripInfo")
       .from("trip_plan")
-    console.log(query)
+      .innerJoin("users","users.id","trip_plan.user_id")
+      .where("users.username",username)
+console.log("queryqueryquery",query);
     return query.then((rows) => {
-
       return rows.map((row) => ({
         id: row.id,
         name: row.tripName,
         description: row.tripInfo,
 
       }));
+
     });
+    
   }
 
   async addTrip(user_id, tripName, tripInfo) {

@@ -119,7 +119,8 @@ exports.seed = function (knex) {
       return knex('trip_plan').insert([
         {id: 2, user_id: 2, attraction_id: 2, tripName: 'hkdream', tripInfo: 'where to go?'},
         {id: 1, user_id: 1, attraction_id: 1, tripName: 'hk', tripInfo: 'what to eat?'},
-        {id: 3, user_id: 3, attraction_id: 3, tripName: 'hkfun', tripInfo: 'What to do?'}
+        {id: 3, user_id: 3, attraction_id: 3, tripName: 'hkfun', tripInfo: 'What to do?'},
+
       ]);
     })
     .then(()=>{

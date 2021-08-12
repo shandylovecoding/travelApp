@@ -79,6 +79,7 @@ passport.use(
     passwordField: 'password',
     passReqToCallback: true
   },async (req, email, password, done) => {
+    console.log("signup rn");
     try {
       let users = await knex("users").where({ email: email });
       if (users.length > 0) {
@@ -87,7 +88,6 @@ passport.use(
       // add hash later
 
       let hash = await bcrypt.hashPassword(password);
-
       const newUser = {
         email: email,
         username: req.body.username,
@@ -95,6 +95,7 @@ passport.use(
       };
       let userID = await knex("users").insert(newUser).returning("id");
       newUser.id = userID[0];
+      console.log(newUser);
       done(null, newUser);
     } catch (err) {
       done(err);

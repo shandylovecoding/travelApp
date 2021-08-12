@@ -1,5 +1,10 @@
 const express = require('express');
-
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+    res.redirect('/login')
+  }
 class tripsHomeRouter {
     constructor(tripshomeService){
         this.tripshomeService = tripshomeService;
@@ -9,15 +14,16 @@ class tripsHomeRouter {
         console.log(10);
         let router = express.Router();
     
-        router.get("/", this.get.bind(this));
-        router.post("/", this.postTrip.bind(this));
+        router.get("/",isLoggedIn, this.get.bind(this));
+        router.post("/",isLoggedIn, this.postTrip.bind(this));
         router.post("/attraction", this.postAttraction.bind(this))
     
         return router;
       }
 
     get(req,res) {
-            return this.tripshomeService.list()
+        console.log("req.userreq.userreq.user",req.user);
+            return this.tripshomeService.list(req.user.username)
                 .then((content)=> {
                     res.render('tripsHome',{content:content});
                     console.log("content",content);
@@ -27,7 +33,7 @@ class tripsHomeRouter {
 
     postTrip(req, res){
             console.log("post trip")
-            this.tripshomeService.addTrip(2,req.body.tripname,req.body.tripinfo).then(() => {
+            this.tripshomeService.addTrip(req.user.id,req.body.tripname,req.body.tripinfo).then(() => {
                 return res.redirect("/tripsHome")
             })
         }

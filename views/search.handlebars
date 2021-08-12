@@ -24,35 +24,34 @@
                         <span>
                             <h5>{{att_name}}</h5>
                         </span>
-                        <span><a data-target="#triplist{{att_id}}" data-toggle="modal"><i
+                        <span class="heart"><a data-target="#triplist{{att_id}}" data-toggle="modal"><i
                                     class="fa fa-heart heart"></i></a></span>
-
                     </div>
-
                     <img src={{att_photo}} class="card-img-top" width="200px" height="150px" alt="...">
                     <div class="card-body">
                         <p class="card-text">{{att_intro}}</p>
                     </div>
                 </div>
-                <div id="triplist{{att_id}}" class="modal fade in" style="display: none; width:400px">
+                <div id="triplist{{att_id}}" class="modal in" style="display: none; width:400px">
                     <div class="modal-content">
                         <div class="modal-header">
-                           
+
                             <form action="/tripsHome/attraction" method="POST">
-                                <input type="text" name="attid" class="form-control" value={{att_id}} ></input>
-                
+                                <input type="text" name="attid" class="form-control" value={{att_id}}></input>
+                        {{#each data}}
                                 <input type="text" name="tripname" class="form-control" required="required"
                                     value={{trip_name}}></input>
-           
+                        {{/each}}
+
 
                                 <input type="submit" class="btn btn-secondary btn-block btn-lg" value="Create">
                             </form>
-                            
+
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                     </div>
                 </div>
-                 {{/each}}
+                {{/each}}
             </div>
         </div>
 
