@@ -22,7 +22,7 @@ class ProfileRouter {
             return this.profileService
                 .list(user)
                 .then((data) => {
-                    res.render("profile", data);
+                    return res.render("profile", {post: data});
                  })
                 .catch((err) => {
                     res.status(500). son(err);
