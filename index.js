@@ -6,7 +6,8 @@ const passport = require("passport");
 const handlebars = require("express-handlebars");
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
-const tripsHomeRouter = require('./routers/tripsHomeRouter');
+
+const tripsHomeRouter = require('./routers/tripsHomeRouter')
 const tripsHomeService = require('./services/tripsHomeService');
 const ProfileRouter = require("./routers/profileRouter");
 const ProfileService = require("./services/profileService");
