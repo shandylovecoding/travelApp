@@ -5,8 +5,9 @@ const passport = require("passport");
 const handlebars = require("express-handlebars");
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
-const tripsHomeRouter = require('./routers/tripsHomeRouter');
 const tripsHomeService = require('./services/tripsHomeService');
+const ProfileRouter = require("./routers/profileRouter");
+const ProfileService = require("./services/profileService");
 var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
@@ -148,12 +149,23 @@ app.use("/", router);
 const searchService = new SearchService(knex)
 app.use("/search", new SearchRouter(searchService).router())
 
+
 const tripshomeService = new tripsHomeService(knex)
 app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
 
 
+
+//PROFILE ROUTER
+const profileService = new ProfileService(knex);
+app.get("/profile", (req, res) => {
+  res.render("profile");
+})
+app.use("/profile", new ProfileRouter(profileService).router());
+
+
+
 // non facebook app
-app.listen(8000, () => {
+app.listen(8080, () => {
   console.log("Application listening to port 8080");
 });
 

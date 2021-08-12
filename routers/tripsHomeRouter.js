@@ -6,10 +6,10 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login')
   }
 class tripsHomeRouter {
-    constructor(tripshomeService){
+    constructor(tripshomeService) {
         this.tripshomeService = tripshomeService;
     }
-    
+
     router() {
         console.log(10);
         let router = express.Router();
@@ -38,14 +38,48 @@ class tripsHomeRouter {
             })
         }
 
-    postAttraction(req,res){
-            console.log("post attraction")
-            this.tripshomeService.addAttractions(req.body.tripname,req.body.attid).then(() => {
-                return res.redirect("/search")
+    get(req, res) {
+        console.log("get")
+        return this.tripshomeService.list()
+            .then((content) => {
+                res.render('tripsHome', {
+                    content: content
+                });
+                console.log("content", content);
             })
-        }
+            .catch((err) => res.status(500).json(err));
+    };
 
+    postTrip(req, res) {
+        console.log("post trip")
+        this.tripshomeService.addTrip(2, req.body.tripname, req.body.tripinfo).then(() => {
+            return res.redirect("/tripsHome")
+        })
     }
 
+    postAttraction(req, res) {
+        console.log("post attraction")
+        this.tripshomeService.addAttractions(req.body.tripname, 2).then(() => {
+            return res.redirect("/search")
+        })
 
-    module.exports = tripsHomeRouter;
+    }
+    deleteTrip(req, res) {
+        console.log("delete trip")
+        return this.journalsService.removeTrip(req.params.id).then(() => {
+            return res.send('deleted');
+        })
+    }
+
+    deleteAttraction(req, res) {
+        console.log("delete attraction")
+        return this.journalsService.removeAttraction(req.params.trip_plan_id, req.params.attraction_id).then(() => {
+            return res.send('deleted');
+        })
+
+    }
+}
+
+
+module.exports = tripsHomeRouter;
+
