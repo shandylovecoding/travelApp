@@ -1,28 +1,31 @@
 const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const upload = require('express-fileupload');
 const passport = require("passport");
 const handlebars = require("express-handlebars");
-const fileUpload = require("express-fileupload");
-
-
 const SearchRouter = require('./routers/searchRouter')
 const SearchService = require('./services/searchService')
-const tripsHomeRouter = require('./routers/tripsHomeRouter');
+
+const tripsHomeRouter = require('./routers/tripsHomeRouter')
 const tripsHomeService = require('./services/tripsHomeService');
+const ProfileRouter = require("./routers/profileRouter");
+const ProfileService = require("./services/profileService");
 var hbs = handlebars.create({})
 
 const router = require("./router.js")(express, passport);
 const JournalsRouter = require("./routers/JournalsRouter");
-const JournalsService = require("./services/JournalsService");
+const JournalsService = require("./services//JournalsService");
 
 const app = express();
-app.use(fileUpload());
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static('public'))
+app.use(express.static('public/assets'))
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(upload())
 app.use(
   session({
     secret: "Super Secret",
@@ -81,6 +84,7 @@ passport.use(
     passwordField: 'password',
     passReqToCallback: true
   },async (req, email, password, done) => {
+    console.log("signup rn");
     try {
       let users = await knex("users").where({ email: email });
       if (users.length > 0) {
@@ -89,14 +93,15 @@ passport.use(
       // add hash later
 
       let hash = await bcrypt.hashPassword(password);
-
       const newUser = {
         email: email,
         username: req.body.username,
         password: hash,
       };
       let userID = await knex("users").insert(newUser).returning("id");
+      console.log(userID);
       newUser.id = userID[0];
+      console.log(newUser);
       done(null, newUser);
     } catch (err) {
       done(err);
@@ -116,12 +121,6 @@ passport.deserializeUser((user, done) => {
 
 
 
-app.get("/journals", (req, res) => {
-  res.render("journals");
-})
-const journalsService = new JournalsService(knex);
-app.use("/api/journals", new JournalsRouter(journalsService).router());
-app.use("/", router);
 
 
 
@@ -147,17 +146,29 @@ hbs.handlebars.registerHelper('eachUnique', function(array, options) {
 
 app.use("/", router);
 
+const journalsService = new JournalsService(knex);
+app.use("/journals", new JournalsRouter(journalsService).router());
 
 const searchService = new SearchService(knex)
-
 app.use("/search", new SearchRouter(searchService).router())
 
-const tripshomeService = new tripsHomeService(knex)
 
+const tripshomeService = new tripsHomeService(knex)
 app.use("/tripsHome", new tripsHomeRouter(tripshomeService).router())
 
+
+
+//PROFILE ROUTER
+const profileService = new ProfileService(knex);
+app.get("/profile", (req, res) => {
+  res.render("profile");
+})
+app.use("/profile", new ProfileRouter(profileService).router());
+
+
+
 // non facebook app
-app.listen(8000, () => {
+app.listen(8080, () => {
   console.log("Application listening to port 8080");
 });
 

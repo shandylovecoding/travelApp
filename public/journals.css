@@ -1,9 +1,4 @@
 
-#postButton {
-    padding: 4px 6px;
-    margin-left: 200px;
-
-}
 
 .journalCol {
     text-align: center;
@@ -51,22 +46,7 @@
     cursor: pointer;
 }
 
-.up {
-    display: flex;
-    width: 460px;
-}
 
-.up1 {
-    display: flex;
-    margin-right: 15px;
-    width: 100%;
-    cursor: pointer;
-}
-
-#up {
-    height: 15px;
-    margin-right: 5px;
-}
 
 
 

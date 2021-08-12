@@ -2,7 +2,6 @@ $(document).ready(function() {
     $('.heart').on('click', function(e) {
         $(e.currentTarget).toggleClass("red");
     });
-    
 })
 
 
@@ -14,17 +13,18 @@ $(document).ready(function ()
         name: 'title',
         source: function (title, callback) {
             $.getJSON("http://localhost:8000/search/search?title=" + title, function (data) {
-                console.log(data);
+                console.log("here",data);
                 return callback(data);
             });
         },
-        limit:4
+        limit:1
     });
 });
 
 
 var searchsTemplate = Handlebars.compile(
     `
+    
     {{#eachUnique content}}
 
 
@@ -70,18 +70,20 @@ var searchsTemplate = Handlebars.compile(
   const reload = (content) => {
     // console.log(8);
     $("#searchs").html(searchsTemplate({content: content}));
-    console.log("content frontend",content);
   };
   
-$(() => {
-    axios
-      .get("/search")
-      .then((content) => {
-          console.log(content);
-        // reload(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  $(".heart").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/gettriplist",
+        
+        success: function(result) {
+            alert('ok');
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+});
 
-    })
