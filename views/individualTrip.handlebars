@@ -1,0 +1,12 @@
+
+    {{#each attractions}}
+    <div style="color:aliceblue">
+        <p>{{this.attraction_name}}</p>
+        <p>{{this.attraction_introduction}}</p>
+        <button id="" class="removeAttraction btn btn-primary btn-sm"
+                            data-id="{{this.ids}}">Delete</button>
+        <img src={{this.attraction_photo}} alt="">
+        
+                            
+    </div>
+    {{/each}}
