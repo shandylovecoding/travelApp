@@ -6,9 +6,7 @@ class tripsHomeService {
     let query = this.knex
       .select("trip_plan.id", "trip_plan.tripName", "trip_plan.tripInfo")
       .from("trip_plan")
-    console.log(query)
     return query.then((rows) => {
-
       return rows.map((row) => ({
         id: row.id,
         name: row.tripName,
@@ -16,6 +14,27 @@ class tripsHomeService {
 
       }));
     });
+  }
+
+  listAttractions(trip_plan_id) {
+    let query = this.knex.select("attractions.attraction_name", "attractions.attraction_introduction", "attractions.attraction_photo", "trip_plan_attraction.attraction_id", "trip_plan_attraction.trip_plan_id")
+      .from("attractions")
+      .innerJoin("trip_plan_attraction", "attractions.id", "trip_plan_attraction.attraction_id")
+      .innerJoin("trip_plan", "trip_plan_attraction.trip_plan_id", "trip_plan.id")
+      .where("trip_plan.id", trip_plan_id)
+  
+    return query.then((rows) => {
+      console.log("rows >> ", rows)
+      return rows.map((row) => (
+        {
+          attraction_name: row.attraction_name,
+          attraction_introduction: row.attraction_introduction,
+          attraction_photo: row.attraction_photo,
+          ids: [row.trip_plan_id, row.attraction_id]
+          
+        }
+      ))
+    })
   }
 
   async addTrip(user_id, tripName, tripInfo) {
@@ -68,11 +87,11 @@ class tripsHomeService {
     })
   }
   removeAttraction(trip_plan_id, attraction_id) {
-    return this.knex("trip_plan_attraction").where("trip_plan_id", trip_plan_id).andwhere("attraction_id", attraction_id).update({
-      attraction_id: null
-    })
+    return this.knex("trip_plan_attraction").where({
+      trip_plan_id: trip_plan_id,
+      attraction_id: attraction_id
+    }).del();
 
   }
 }
-  module.exports = tripsHomeService;
-
+module.exports = tripsHomeService;
