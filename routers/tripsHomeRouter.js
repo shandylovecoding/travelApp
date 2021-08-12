@@ -13,21 +13,15 @@ class tripsHomeRouter {
     router() {
         console.log(10);
         let router = express.Router();
-<<<<<<< HEAD
     
-        router.get("/",isLoggedIn, this.get.bind(this));
-        router.post("/",isLoggedIn, this.postTrip.bind(this));
-        router.post("/attraction", this.postAttraction.bind(this))
-    
-=======
 
-        router.get("/", this.get.bind(this));
+
+        router.get("/", isLoggedIn, this.get.bind(this));
         router.get("/attraction/:trip_plan_id", this.getAttraction.bind(this));
-        router.post("/", this.postTrip.bind(this));
+        router.post("/", isLoggedIn, this.postTrip.bind(this));
         router.post("/attraction", this.postAttraction.bind(this));
         router.delete("/:id", this.deleteTrip.bind(this));
         router.delete("/attraction/:trip_plan_id/:attraction_id", this.deleteAttraction.bind(this));
->>>>>>> origin/main
         return router;
       }
 
@@ -48,8 +42,6 @@ class tripsHomeRouter {
             })
         }
 
-<<<<<<< HEAD
-=======
     getAttraction(req, res){
         console.log("get attraction")
         return this.tripshomeService.listAttractions(req.params.trip_plan_id).then((attractions) => {
@@ -69,7 +61,6 @@ class tripsHomeRouter {
             return res.redirect("/tripsHome")
         })
     }
->>>>>>> origin/main
 
     postAttraction(req, res) {
         console.log("post attraction")
