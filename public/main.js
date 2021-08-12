@@ -72,15 +72,18 @@ var searchsTemplate = Handlebars.compile(
     $("#searchs").html(searchsTemplate({content: content}));
   };
   
-// $(() => {
-//     axios
-//       .get("/search")
-//       .then((content) => {
-//           console.log(content);
-//         // reload(res);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
+  $(".heart").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/gettriplist",
+        
+        success: function(result) {
+            alert('ok');
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+});
 
-//     })

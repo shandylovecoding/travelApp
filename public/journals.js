@@ -2,11 +2,11 @@
 $(() => {
     $(".remove").on("click", (event) => {
         console.log($(event.currentTarget).data("id"))
-        axios.delete("/api/journals/" + $(event.currentTarget).data("id"))
+        axios.delete("/journals/" + $(event.currentTarget).data("id"))
             .then((res) => {
                 console.log("this is deleting")
                 console.log(res);
-                window.location = '/api/journals';
+                window.location = '/journals';
             })
             .catch((e) => {
                 console.log(e);

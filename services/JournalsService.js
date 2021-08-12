@@ -3,28 +3,25 @@ class JournalsService {
         this.knex = knex;
     }
 
-    async add(username, post, photo) {
+    async add(user_id, post, photo) {
         console.log("logging photo data >>", photo)
-        var query = this.knex
-        .select("id")
-        .from("users")
-        .where("users.username", username)
 
         if (photo) {
             var newpost = {
-                user_id: query[0].id,
+                user_id: user_id,
                 content: post,
                 photos: photo
             };
 
         } else {
             var newpost = {
-                user_id: query[0].id,
+                user_id: user_id,
                 content: post
             };
         };
         //await this.knex.insert(newpost).into("journals");
         var newpostID = await this.knex.insert(newpost).into("journals").returning("id");
+        console.log(newpostID);
         newpost.id = newpostID;
     }
 
