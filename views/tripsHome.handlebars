@@ -43,6 +43,7 @@
 
         <div class="tripplans">
             {{#each content}}
+            <a href="tripsHome/attraction/{{this.id}}">
             <div class="tripHomeCard">
                 <h2>{{name}}</h2>
 >>>>>>> 41383c4f0b044f20cba104fb8fe4fc58e670a8f0
@@ -50,6 +51,7 @@
                 <button class="removeTrip btn btn-outline-dark btn-sm"
                             data-id="{{this.id}}">Delete</button>
             </div>
+            </a>
             {{/each}}
 
         </div>

@@ -12,8 +12,8 @@ module.exports = (express, passport) => {
     res.redirect('/login')
   }
 
-  router.get('/', (req, res) => {
-    res.render('home')
+  router.get('/',isLoggedIn, (req, res) => {
+    res.render('home',{  username: req.user.username })
   })
 
   router.get('/login', (req, res) => {

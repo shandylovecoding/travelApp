@@ -12,18 +12,17 @@ class JournalsRouter {
 
     router() {
         let router = express.Router();
-
         router.get("/", isLoggedIn, this.get.bind(this));
         router.post("/", isLoggedIn, this.post.bind(this));
         router.delete("/:id",isLoggedIn, this.delete.bind(this));
-
         return router;
     }
 
     get(req, res) {
         return this.journalsService.list(req.user.username).then((results) => {
             return res.render('journals', {
-                list: results
+                list: results,
+                username: req.user.username
             });
         });
     }
