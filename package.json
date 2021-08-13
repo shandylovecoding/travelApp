@@ -1,7 +1,7 @@
 {
   "name": "travelapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the Hong Kong Travels website project. We've used Node.JS, Knex.JS and Postgres for the backend, and Bootstrap and Express-Handlebars on the frontend.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -29,5 +29,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.7.1"
-  }
+  },
+  "devDependencies": {}
 }
