@@ -7,7 +7,9 @@ class tripsHomeService {
     let query = this.knex
       .select("trip_plan.id", "trip_plan.tripName", "trip_plan.tripInfo")
       .from("trip_plan")
-      .where("trip_plan.user_id",user_id)
+      .innerJoin("users","users.id","trip_plan.user_id")
+      .where("users.username",username)
+
     return query.then((rows) => {
       console.log("owsowsowsowsows",rows);
       return rows.map((row) => ({

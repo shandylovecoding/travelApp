@@ -13,10 +13,9 @@ class tripsHomeRouter {
     router() {
         console.log(10);
         let router = express.Router();
-    
 
 
-        router.get("/", isLoggedIn, this.get.bind(this));
+        router.get("/",isLoggedIn, this.get.bind(this));
         router.get("/attraction/:trip_plan_id", this.getAttraction.bind(this));
         router.post("/", isLoggedIn, this.postTrip.bind(this));
         router.post("/attraction", this.postAttraction.bind(this));
