@@ -1,6 +1,6 @@
 <div id="searchs">
 
-    {{#eachUnique content}}
+    {{#eachUnique data.content}}
 
     <section class="search_secOne" style="background: url({{photo}}) no-repeat center center;background-size: cover;">
     </section>
@@ -18,7 +18,7 @@
             </br>
             <div class="row">
 
-                {{#each content}}
+                {{#each data.content}}
                 <div class="card ">
                     <div id={{att_id}} class="card-title" style=" margin-top: 10px;">
                         <span>
@@ -32,19 +32,21 @@
                         <p class="card-text">{{att_intro}}</p>
                     </div>
                 </div>
+
                 <div id="triplist{{att_id}}" class="modal in" style="display: none; width:400px">
                     <div class="modal-content">
                         <div class="modal-header">
-
                             <form action="/tripsHome/attraction" method="POST">
                                 <input type="text" name="attid" class="form-control" value={{att_id}}></input>
-                        {{#each data}}
+                            {{#data.triplist}}
+
                                 <input type="text" name="tripname" class="form-control" required="required"
+
                                     value={{trip_name}}></input>
-                        {{/each}}
+                            {{/data.triplist}}
 
-
-                                <input type="submit" class="btn btn-secondary btn-block btn-lg" value="Create">
+                                <input data-dismiss="modal" type="submit" class="btn btn-secondary btn-block btn-lg"
+                                    value="Create">
                             </form>
 
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -52,6 +54,7 @@
                     </div>
                 </div>
                 {{/each}}
+            
             </div>
         </div>
 
@@ -62,7 +65,7 @@
             <h2>Journals</h2>
             </br>
             <div class="row">
-                {{#eachUnique content}}
+                {{#eachUnique data.content }}
                 <div class="card ">
                     <div class="card-title" style=" margin-top: 10px;">
                         <span>

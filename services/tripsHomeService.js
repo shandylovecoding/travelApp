@@ -2,16 +2,14 @@ class tripsHomeService {
   constructor(knex) {
     this.knex = knex
   }
-  list(username) {
+  list(user_id) {
+    console.log("user_id",user_id);
     let query = this.knex
       .select("trip_plan.id", "trip_plan.tripName", "trip_plan.tripInfo")
       .from("trip_plan")
-<<<<<<< HEAD
-      .innerJoin("users","users.id","trip_plan.user_id")
-      .where("users.username",username)
-=======
->>>>>>> origin/main
+      .where("trip_plan.user_id",user_id)
     return query.then((rows) => {
+      console.log("owsowsowsowsows",rows);
       return rows.map((row) => ({
         id: row.id,
         name: row.tripName,
@@ -50,6 +48,7 @@ class tripsHomeService {
       tripInfo: tripInfo
     }
     var newTripID = await this.knex.insert(newTrip).into("trip_plan").returning('id');
+    console.log(newTripID);
     newTrip.id = newTripID;
 
   }

@@ -27,9 +27,9 @@ class tripsHomeRouter {
 
     get(req,res) {
         console.log("req.userreq.userreq.user",req.user);
-            return this.tripshomeService.list(req.user.username)
+            return this.tripshomeService.list(req.user.id)
                 .then((content)=> {
-                    res.render('tripsHome',{content:content});
+                    res.render('tripsHome',{content:content, username: req.user.username });
                     console.log("content",content);
                 })
                 .catch((err)=> res.status(500).json(err));
@@ -47,7 +47,8 @@ class tripsHomeRouter {
         return this.tripshomeService.listAttractions(req.params.trip_plan_id).then((attractions) => {
             console.log("attractions info >>", attractions)
             res.render("individualTrip", {
-                attractions: attractions
+                attractions: attractions,
+                username: req.user.username
             });
             
         })
@@ -57,7 +58,7 @@ class tripsHomeRouter {
 
     postTrip(req, res) {
         console.log("post trip")
-        this.tripshomeService.addTrip(2, req.body.tripname, req.body.tripinfo).then(() => {
+        this.tripshomeService.addTrip(req.user.id, req.body.tripname, req.body.tripinfo).then(() => {
             return res.redirect("/tripsHome")
         })
     }
