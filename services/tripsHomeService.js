@@ -8,7 +8,7 @@ class tripsHomeService {
       .select("trip_plan.id", "trip_plan.tripName", "trip_plan.tripInfo")
       .from("trip_plan")
       .innerJoin("users","users.id","trip_plan.user_id")
-      .where("users.username",username)
+      .where("users.id",user_id)
 
     return query.then((rows) => {
       console.log("owsowsowsowsows",rows);
