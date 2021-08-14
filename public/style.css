@@ -30,6 +30,10 @@ body {
     z-index: -999;
 }
 
+.carousel-inner h6 {
+    margin-top: 20px;
+}
+
 .carousel-caption {
     top: 40vh;
 }
