@@ -19,23 +19,33 @@ class JournalsRouter {
     }
 
     get(req, res) {
+        console.log("get journals")
+        var data = {};
         return this.journalsService.list(req.user.username).then((results) => {
-            return res.render('journals', {
-                list: results,
-                username: req.user.username
-            });
-        });
+            return data.list = results;
+        }).then(() =>{
+            return this.journalsService.listAllDistricts()
+        }).then((allDistricts) => {
+            console.log("allDistricts >> ", allDistricts)
+            data.username = req.user.username;
+            return data.district_list = allDistricts;
+        }).then(() => {
+            console.log("journals data >>", data)
+            res.render("journals", data)
+        })
     }
-    post(req, res) {
 
+    post(req, res) {
+        console.log("REQ BODY >> ", req.body)
         if (req.files) {
             console.log('has photo')
-            return this.journalsService.add(req.user.id, req.body.post, req.files.photo.data).then(() => {
+            
+            return this.journalsService.add(req.user.id, req.body.post, req.files.photo.data, req.body.district_list).then(() => {
                 return res.redirect("/journals");
             })
         } else {
             console.log('no photo')
-            return this.journalsService.add(req.user.id, req.body.post).then(() => {
+            return this.journalsService.add(req.user.id, req.body.post, req.body.district_list).then(() => {
                     return res.redirect("/journals");
                 })
             }
