@@ -2,9 +2,10 @@
     width: 100% !important;
     height: 100vh !important;
     background-image: linear-gradient(
-        rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(./carousel2.jpeg);
+        rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(./carousel2.jpeg);
     background-size: cover !important;
     background-attachment: fixed;
+    background-position: center !important;
     padding-left: 8% !important;
     padding-right: 8% !important;
     box-sizing: border-box !important;
@@ -30,8 +31,9 @@
 }
 .tripHomeRow p {
     color: #fff;
-    font-size: 11px;
-    line-height: 15px;
+    font-size: 15px;
+    line-height: 20px;
+    
 }
 
 .tripButton{
@@ -67,9 +69,9 @@
 
 .tripHomeCard h2{ 
     color: black;
-    text-shadow:  0 0 5px #999;
+   
 }   
 .tripHomeCard p{ 
     color: black;
-    text-shadow:  0 0 5px #999;
+   
 }   
