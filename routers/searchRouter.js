@@ -56,7 +56,7 @@ class SearchRouter {
                 })
                 .then((attraction_id)=> {
                     console.log("attraction_id",attraction_id);
-                    return data.attraction_id = attraction_id
+                    return data.attraction = attraction_id
                 })
                 .then(()=>{
                     res.render('search',{

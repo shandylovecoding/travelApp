@@ -92,9 +92,9 @@ class searchService {
       .where("trip_plan.user_id",userId)
       return query.then((rows) => {
         console.log(rows);
-        return rows.map((row) => ({
-          attraction_id: row.attraction_id,
-        }))
+        return rows.map((row) => 
+          row.attraction_id,
+        )
       })
 }
 

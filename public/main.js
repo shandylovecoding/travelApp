@@ -2,10 +2,7 @@ $(document).ready(function() {
     $('.heart').on('click', function(e) {
         $(e.currentTarget).toggleClass("red");
         console.log("e.currentTarget.id",e.currentTarget.id);
-        $.ajax({
-            url: '/tripHome/'+ id,
-            type: 'GET',
-        })
+      
     });
 })
 

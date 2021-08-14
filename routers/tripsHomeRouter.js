@@ -65,7 +65,7 @@ class tripsHomeRouter {
     postAttraction(req, res) {
         console.log("post attraction")
         console.log("!!!!!!!!!!!!!!!!!!");
-        this.tripshomeService.checkAttractions(req.body.tripid, req.body.attid).then((result) => {
+        this.tripshomeService.checkAttraction(req.body.tripid, req.body.attid).then((result) => {
             console.log("result", result);
             if (result) {
                 console.log("attraction del");
