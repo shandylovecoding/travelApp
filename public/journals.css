@@ -51,7 +51,8 @@
 
 
 body {
-    background-image: url(hkwallpaper.jpg);
+    background-image: linear-gradient(
+        rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(hkwallpaper.jpg);
     background-attachment: fixed;
     background-position: center !important;
     background-size: cover !important;
@@ -62,8 +63,8 @@ body {
 }
 
 .card {
-    border: none;
-    margin-top: 30px;
+    border: 10px;
+    
     
     
 }
