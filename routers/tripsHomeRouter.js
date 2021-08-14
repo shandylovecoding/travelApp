@@ -16,7 +16,7 @@ class tripsHomeRouter {
 
 
         router.get("/", isLoggedIn, this.get.bind(this));
-        router.get("/attraction/:trip_plan_id", this.getAttraction.bind(this));
+        router.get("/attraction/:trip_plan_id",isLoggedIn, this.getAttraction.bind(this));
         router.post("/", isLoggedIn, this.postTrip.bind(this));
         router.post("/attraction", this.postAttraction.bind(this));
         router.delete("/:id", this.deleteTrip.bind(this));
@@ -43,16 +43,28 @@ class tripsHomeRouter {
 
     getAttraction(req, res) {
         console.log("get attraction")
-        return this.tripshomeService.listAttractions(req.params.trip_plan_id).then((attractions) => {
-            console.log("attractions info >>", attractions)
-            res.render("individualTrip", {
-                attractions: attractions,
-                username: req.user.username
-            });
-
+        let data ={}
+        return this.tripshomeService.listAttractions(req.params.trip_plan_id)
+        .then((attraction) => {
+            return data.attraction = attraction
+            // res.render("individualTrip", {
+            //     attractions: attractions,
+            //     username: req.user.username
+            // });
         })
-            .catch((err) => res.status(500).json(err));
-
+        .then(()=>{
+            return  this.tripshomeService.listtrip(req.user.username)
+        })
+        .then((trip)=> {
+            return data.trip = trip
+        })
+        .then(()=>{
+            console.log("data!!!!trip",data);
+            res.render('individualTrip',{
+                data: data,
+                username: req.user.username});
+        })
+        
     }
 
     postTrip(req, res) {

@@ -21,6 +21,23 @@ class tripsHomeService {
     });
     
   }
+  listtrip(username) {
+    console.log(6);
+    let query = this.knex
+      .select("trip_plan.tripName","trip_plan.tripInfo", "trip_plan.id", "users.username")
+      .from("trip_plan")
+      .innerJoin("users", "users.id", "trip_plan.user_id")
+      .where("users.username", username)
+    return query.then((rows) => {
+      console.log(rows);
+      return rows.map((row) => ({
+        trip_id: row.id,
+        trip_name: row.tripName,
+        trip_info: row.tripInfo,
+        user_name: row.username,
+      }))
+    })
+  }
 
   listAttractions(trip_plan_id) {
     let query = this.knex.select("attractions.attraction_name", "attractions.attraction_introduction", "attractions.attraction_photo", "trip_plan_attraction.attraction_id", "trip_plan_attraction.trip_plan_id")
