@@ -12,8 +12,8 @@ module.exports = (express, passport) => {
     res.redirect('/login')
   }
 
-  router.get('/', (req, res) => {
-    res.render('home')
+  router.get('/',isLoggedIn, (req, res) => {
+    res.render('home',{  username: req.user.username })
   })
 
   router.get('/login', (req, res) => {
@@ -28,6 +28,12 @@ module.exports = (express, passport) => {
     console.log('req.user.username', req.user.username);
     res.render('home', { username: req.user.username })
   })
+
+  // router.get('/search', isLoggedIn, (req, res) => {
+  //   console.log('req.user.username', req.user.username);
+  //   res.render('search', { username: req.user.username })
+  // })
+
   router.get('/error', (req, res) => {
     res.render('error')
   })
