@@ -9,6 +9,7 @@ class JournalsService {
         if (photo) {
             var newpost = {
                 user_id: user_id,
+                district_id: 2,
                 content: post,
                 photos: photo
             };
@@ -16,10 +17,11 @@ class JournalsService {
         } else {
             var newpost = {
                 user_id: user_id,
+                district_id: 2,
                 content: post
             };
         };
-        //await this.knex.insert(newpost).into("journals");
+        console.log("newpostnewpost",newpost);
         var newpostID = await this.knex.insert(newpost).into("journals").returning("id");
         console.log(newpostID);
         newpost.id = newpostID;
@@ -33,7 +35,6 @@ class JournalsService {
             .orderBy("journals.id", "asc");
 
         return query.then((rows) => {
-            console.log(rows)
             return rows.map((row) => {
                 if (row.photos) {
                     var base = Buffer.from(row.photos);
@@ -44,6 +45,7 @@ class JournalsService {
                     content: row.content,
                     photos: photo
                 }
+                
             })
 
         })

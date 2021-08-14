@@ -11,18 +11,7 @@ exports.seed = function (knex) {
           username: 'jack1',
           password: 'jackpassword'
         },
-        {
-          id: 2,
-          email: 'josh@gmail.com',
-          username: 'josh1',
-          password: 'joshpassword'
-        },
-        {
-          id: 3,
-          email: 'john@gmail.com',
-          username: 'john1',
-          password: 'johnpassword'
-        }
+       
         
       ]);
     })
@@ -117,9 +106,9 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('trip_plan').insert([
-        {id: 2, user_id: 2, attraction_id: 2, tripName: 'hkdream', tripInfo: 'where to go?'},
+        {id: 2, user_id: 1, attraction_id: 2, tripName: 'hkdream', tripInfo: 'where to go?'},
         {id: 1, user_id: 1, attraction_id: 1, tripName: 'hk', tripInfo: 'what to eat?'},
-        {id: 3, user_id: 3, attraction_id: 3, tripName: 'hkfun', tripInfo: 'What to do?'},
+        {id: 3, user_id: 1, attraction_id: 3, tripName: 'hkfun', tripInfo: 'What to do?'},
 
       ]);
     })
@@ -140,9 +129,9 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('journals').insert([
-        {id: 1, user_id: 1, district_id: 1, content: 'Quite a crap trip', time_of_creation: '05_08_21'},
-        {id: 2, user_id: 2, district_id: 2, content: 'OK LA', time_of_creation: '05_08_21'},
-        {id: 3, user_id: 3, district_id: 3, content: 'Sometimes good, Sometimes Bad La', time_of_creation: '05_08_21'}   
+        {id: 1, user_id: 1, district_id: 1, content: 'Quite a crap trip'},
+        // {id: 2, user_id: 2, district_id: 2, content: 'OK LA'},
+        // {id: 3, user_id: 3, district_id: 3, content: 'Sometimes good, Sometimes Bad La'}   
       ]);
     }); 
 };
