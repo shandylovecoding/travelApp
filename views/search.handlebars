@@ -24,19 +24,27 @@
                         <span>
                             <h5>{{att_name}}</h5>
                         </span>
-                        {{#each ../data.attraction_id }}
-                         {{#ifEquals attraction_id  ../att_id}}
-                    <span class="heart"><a data-target="#triplist{{att_id}}" data-toggle="modal"><i
-                                    class="fa fa-heart heart"></i></a></span>
+
+                        <span class="heart"><a data-target="  #like{{att_id}} " data-toggle="modal">
+                                <i class="fa fa-heart heart
+
+                        {{#each ../data.attraction}}
+                        {{#ifEquals this ../att_id}}
+                             red
+                            {{else}}
+                           
                         {{/ifEquals}}
+                 
                         {{/each}}
+                            "></i>
+                            </a></span>
                     </div>
                     <img src={{att_photo}} class="card-img-top" width="200px" height="150px" alt="...">
                     <div class="card-body">
                         <p class="card-text">{{att_intro}}</p>
                     </div>
                 </div>
-                <div id="triplist{{att_id}}" class="modal in" style="display: none; width:400px">
+                <div id="like{{att_id}}" class="modal in" style="display: none; width:400px">
 
                     <div class="modal-content">
                         <div class="modal-header">
@@ -51,7 +59,15 @@
                                     <option value={{trip_id}}>{{trip_name}}</option>
                                     {{/each}}
                                 </select>
-                                <input type="submit" class="btn btn-secondary btn-block btn-lg" value="Add">
+                                <input type="submit" class="btn btn-secondary btn-block btn-lg" 
+                                {{#each ../data.attraction}}
+                                {{#ifEquals this ../att_id}}
+                                    value="Delete"
+                                    {{else}}
+                                     value="Add"
+                                {{/ifEquals}}     
+                                {{/each}}
+                                >
                             </form>
 
                         </div>

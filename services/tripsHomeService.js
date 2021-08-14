@@ -72,7 +72,21 @@ class tripsHomeService {
   //   newTripAttract.id = newTripAttractID;
   // }
 
-
+  checkAttraction(trip_id, att_id) {
+    console.log("Now checking attraction..")
+    let query = this.knex
+      .select("trip_plan_attraction.attraction_id")
+      .from("trip_plan_attraction")
+      .where("trip_plan_attraction.trip_plan_id",trip_id)
+      return query.then((rows) => {
+      console.log("rows.length",rows.length); 
+      if(rows.length>0 ){
+        return true
+      }else{
+        return false
+      }
+      })
+}
   async addAttractions(trip_id, attraction_id) {
    
     const newAttr = {
