@@ -28,23 +28,42 @@ class SearchRouter {
             let data ={}
             var title = req.query.title;
             console.log(title);
-            return this.searchService.list(title)
+            return this.searchService.listdistrict(title)
                 .then((content)=> {
                     console.log(4);
                     return data.content = content
                 })
                 .then(()=>{
+                    return this.searchService.listattraction(title)
+                })
+                .then((attlist)=> {
+                    return data.attlist = attlist
+                })
+                .then(()=>{
                     return this.searchService.listtrip(req.user.username)
                 })
                 .then((triplist)=> {
-                    console.log('triplisttriplisttriplisttriplist',triplist);
                     return data.triplist = triplist
+                })
+                .then(()=>{
+                    return this.searchService.listjournal(title)
+                })
+                .then((tripjour)=> {
+                    return data.tripjour = tripjour
+                })
+                .then(()=>{
+                    return this.searchService.checkAttraction(req.user.id)
+                })
+                .then((attraction_id)=> {
+                    console.log("attraction_id",attraction_id);
+                    return data.attraction_id = attraction_id
                 })
                 .then(()=>{
                     res.render('search',{
                         data: data,
                         username: req.user.username});
                 })
+                
         };
 
         // gettriplist(req,res) {

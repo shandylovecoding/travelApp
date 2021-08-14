@@ -97,8 +97,9 @@ passport.use(
         username: req.body.username,
         password: hash,
       };
+      console.log(newUser);
       let userID = await knex("users").insert(newUser).returning("id");
-      console.log(userID);
+      console.log("userID",userID);
       newUser.id = userID[0];
       console.log(newUser);
       done(null, newUser);
@@ -141,6 +142,13 @@ hbs.handlebars.registerHelper('eachUnique', function(array, options) {
   }
   // return the template compiled
   return buffer;
+});
+
+hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  console.log(" arg1", arg1);
+  console.log(" arg2", arg2);
+  console.log("arg1 == arg2",arg1 == arg2);
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
 
 app.use("/", router);

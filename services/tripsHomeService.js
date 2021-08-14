@@ -8,7 +8,7 @@ class tripsHomeService {
       .select("trip_plan.id", "trip_plan.tripName", "trip_plan.tripInfo")
       .from("trip_plan")
       .innerJoin("users","users.id","trip_plan.user_id")
-      .where("users.username",username)
+      .where("users.id",user_id)
 
     return query.then((rows) => {
       console.log("owsowsowsowsows",rows);
@@ -72,19 +72,17 @@ class tripsHomeService {
   //   newTripAttract.id = newTripAttractID;
   // }
 
-  async addAttractions(trip_name, attraction_id) {
-    let query = await this.knex
-      .select("trip_plan.id")
-      .from("trip_plan")
-      .innerJoin("trip_plan_attraction", "trip_plan.id", "trip_plan_attraction.trip_plan_id")
-      .where("tripName", trip_name);
+
+  async addAttractions(trip_id, attraction_id) {
+   
     const newAttr = {
       attraction_id: attraction_id,
-      trip_plan_id: query[0].id,
+      trip_plan_id: trip_id,
     }
     console.log(newAttr);
 
     let newAttrId = await this.knex.insert(newAttr).into("trip_plan_attraction").returning("id");
+    console.log(newAttrId);
     newAttr.id = newAttrId[0]
 
   }

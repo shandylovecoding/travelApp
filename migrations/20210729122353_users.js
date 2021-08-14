@@ -51,7 +51,6 @@ exports.up = function(knex) {
         table.foreign('district_id').references('districts.id');
         table.string('content');
         table.binary('photos');
-        table.string('time_of_creation');
         table.timestamps(false,true) ;
       })
 }
