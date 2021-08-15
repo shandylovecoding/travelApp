@@ -5,8 +5,9 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="d-flex justify-content-between p-4 px-3">
-                        <div class="d-flex flex-row align-items-center"> <img src="central.jpeg" width="50" height="50"
-                                class="rounded-circle">
+                        <div class="d-flex flex-row align-items-center"> 
+                            {{!-- <img src="central.jpeg" width="50" height="50"
+                                class="rounded-circle"> --}}
                             <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Journal Post:</span>
                             </div>
                         </div>
@@ -43,14 +44,15 @@
             <div class="col-md-6">
                 <div class="card jpcard">
                     <div class="d-flex justify-content-between p-2 px-3">
-                        <div class="d-flex flex-row align-items-center"> <img src="central.jpeg" width="50" height="50"
-                                class="rounded-circle">
-                            <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Journal Entry:</span>
+                        <div class="d-flex flex-row align-items-center">
+                             {{!-- <img src="central.jpeg" width="50" height="50"
+                                class="rounded-circle"> --}}
+                            {{!-- <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Journal Entry:</span>
 
-                            </div>
-                            <div>District name: {{this.district_name}}</div>
+                            </div> --}}
+                            
                         </div>
-
+                            <div>{{this.district_name}}</div>
                     </div> <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt=""
                         class="img-fluid">
                     <div class="p-2">
