@@ -1,8 +1,7 @@
 
 
 ///Ajax for typeahead
-$(document).ready(function ()
-{
+$(document).ready(function (){
     $('.typeahead').typeahead(
     {
         name: 'title',
@@ -104,24 +103,10 @@ var searchsTemplate = Handlebars.compile(
       `
   );
   
-  // This function is responsible of re-rendering the page every time we update our notes. It recieves the array of notes and then forces each note (each element within the array) into the notes template, which iterates through the array rendering all the notes to the DOM in the same format.
-  const reload = (content) => {
-    // console.log(8);
-    $("#searchs").html(searchsTemplate({content: content}));
-  };
-  
-  $(".heart").click(function(e) {
-    e.preventDefault();
-    $.ajax({
-        type: "GET",
-        url: "/gettriplist",
-        
-        success: function(result) {
-            alert('ok');
-        },
-        error: function(result) {
-            alert('error');
-        }
-    });
-});
+
+
+
+////////
+
+
 

@@ -34,19 +34,21 @@
         </div>
 
         {{#each content}}
+        <div class="tripplanContainer">
+            <div class="tripplans">
+                <a href="tripsHome/attraction/{{this.id}}">
+                    <div class="tripHomeCard">
+                        <button class="removeTrip close" data-id="{{this.id}}">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                        {{!-- <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt=""
+                            class="img-fluid"> --}}
+                        <h2>{{name}}</h2>
+                        <p>{{description}}</p>
+                    </div>
+                </a>
 
-        <div class="tripplans">
-            <a href="tripsHome/attraction/{{this.id}}">
-                <div class="tripHomeCard">
-                    <button class="removeTrip close" data-id="{{this.id}}">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </button>
-                    <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt="" class="img-fluid">
-                    <h2>{{name}}</h2>
-                    <p>{{description}}</p>
-                </div>
-            </a>
-
+            </div>
         </div>
         {{/each}}
 
