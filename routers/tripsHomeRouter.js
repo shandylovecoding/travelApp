@@ -11,7 +11,6 @@ class tripsHomeRouter {
     }
 
     router() {
-        console.log(10);
         let router = express.Router();
 
 
@@ -25,11 +24,9 @@ class tripsHomeRouter {
     }
 
     get(req, res) {
-        console.log("req.userreq.userreq.user", req.user);
         return this.tripshomeService.list(req.user.id)
             .then((content) => {
                 res.render('tripsHome', { content: content, username: req.user.username });
-                console.log("content", content);
             })
             .catch((err) => res.status(500).json(err));
     };
@@ -49,13 +46,12 @@ class tripsHomeRouter {
             return data.attraction = attraction
         })
         .then(()=>{
-            return  this.tripshomeService.listtrip(req.user.username)
+            return  this.tripshomeService.listtrip(req.params.trip_plan_id)
         })
         .then((trip)=> {
             return data.trip = trip
         })
         .then(()=>{
-            console.log("data!!!!trip",data);
             res.render('individualTrip',{
                 data: data,
                 username: req.user.username});
@@ -64,7 +60,6 @@ class tripsHomeRouter {
     }
 
     postTrip(req, res) {
-        console.log("post trip")
         this.tripshomeService.addTrip(req.user.id, req.body.tripname, req.body.tripinfo).then(() => {
             return res.redirect("/tripsHome")
         })
@@ -72,7 +67,6 @@ class tripsHomeRouter {
     
     postAttraction(req, res) {
         console.log("post attraction")
-        console.log("!!!!!!!!!!!!!!!!!!");
         this.tripshomeService.checkAttraction(req.body.tripid, req.body.attid).then((result) => {
             if (result) {
                 console.log("attraction del");
@@ -89,15 +83,12 @@ class tripsHomeRouter {
         })
     }
     deleteTrip(req, res) {
-        console.log("delete trip")
         return this.tripshomeService.removeTrip(req.params.id).then(() => {
             return res.send('deleted');
         })
     }
 
     deleteAttraction(req, res) {
-        console.log("delete attraction")
-        console.log("params >> ", req.params.trip_plan_id, req.params.attraction_id)
         return this.tripshomeService.removeAttraction(req.params.trip_plan_id, req.params.attraction_id).then(() => {
             return res.send('deleted');
         })
