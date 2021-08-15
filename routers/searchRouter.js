@@ -55,7 +55,6 @@ class SearchRouter {
                     return this.searchService.checkAttraction(req.user.id)
                 })
                 .then((attraction_id)=> {
-                    console.log("attraction_id",attraction_id);
                     return data.attraction = attraction_id
                 })
                 .then(()=>{
@@ -65,18 +64,6 @@ class SearchRouter {
                 })
                 
         };
-
-        // gettriplist(req,res) {
-        //     console.log(5);
-        //     var username = req.user.username
-        //     console.log(title);
-        //     return this.searchService.listtrip(username)
-        //         .then((data)=> {
-        //             console.log(5);
-        //             return res.render('search',{data:data});  
-        //         })
-        //         .catch((err)=> res.status(500).json(err));
-        // };
 
         getsearch(req,res) {
             console.log(2222);

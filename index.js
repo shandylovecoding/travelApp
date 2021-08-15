@@ -146,7 +146,6 @@ hbs.handlebars.registerHelper('eachUnique', function(array, options) {
 
 hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
   for(let i = 0; i <arg2; i++){
-  console.log(arg1, arg2);
   if(arg1 == arg2){
     return options.fn(this)
   }

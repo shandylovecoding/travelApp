@@ -47,10 +47,6 @@ class tripsHomeRouter {
         return this.tripshomeService.listAttractions(req.params.trip_plan_id)
         .then((attraction) => {
             return data.attraction = attraction
-            // res.render("individualTrip", {
-            //     attractions: attractions,
-            //     username: req.user.username
-            // });
         })
         .then(()=>{
             return  this.tripshomeService.listtrip(req.user.username)
@@ -78,7 +74,6 @@ class tripsHomeRouter {
         console.log("post attraction")
         console.log("!!!!!!!!!!!!!!!!!!");
         this.tripshomeService.checkAttraction(req.body.tripid, req.body.attid).then((result) => {
-            console.log("result", result);
             if (result) {
                 console.log("attraction del");
                 this.tripshomeService.removeAttraction(req.body.tripid, req.body.attid).then(() => {
