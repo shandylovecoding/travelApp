@@ -1,10 +1,3 @@
-// $(document).ready(function() {
-//     $('.heart').on('click', function(e) {
-//         $(e.currentTarget).toggleClass("red");
-//         console.log("e.currentTarget.id",e.currentTarget.id);
-      
-//     });
-// })
 
 
 ///Ajax for typeahead
@@ -14,12 +7,13 @@ $(document).ready(function ()
     {
         name: 'title',
         source: function (title, callback) {
-            $.getJSON("http://localhost:8000/search/search?title=" + title, function (data) {
+
+            $.getJSON("http://localhost:8080/search/search?title=" + title, function (data) {
                 console.log("here",data);
                 return callback(data);
             });
         },
-        limit:1
+        limit:4
     });
 });
 
