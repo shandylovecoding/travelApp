@@ -8,7 +8,10 @@ class ProfileRouter {
     router() {
         let router = express.Router();
 
-        router.get("/", this.get.bind(this));
+        router.get("/", (req,res) => {
+            res.redirect("/:id", this.get.bind(this));
+        });
+
         router.get("/:id", this.get.bind(this));
 
         return router;
@@ -19,13 +22,12 @@ class ProfileRouter {
         console.log(user);
 
         if(typeof user != "undefined"){
-            return this.profileService
-                .list(user)
+            return this.profileService.list(user)
                 .then((data) => {
-                    return res.render("profile", {post: data});
+                    return res.render("profile", {post: data, user: req.params.id});
                  })
                 .catch((err) => {
-                    res.status(500). son(err);
+                    res.status(500).json(err);
                  });
         } else {
             res.status(500);
