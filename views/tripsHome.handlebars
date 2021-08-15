@@ -33,25 +33,22 @@
             <a data-target="#aTrip" data-toggle="modal" class="tripButton" type="button">Create Trip</a>
         </div>
 
+        {{#each content}}
 
         <div class="tripplans">
-            {{#each content}}
             <a href="tripsHome/attraction/{{this.id}}">
-                <div class="tripHomeCardhead"> 
-                    <h2>{{name}} </h2> 
-                    <button class="close" data-id="{{this.id}}">
+                <div class="tripHomeCard">
+                    <button class="removeTrip close" data-id="{{this.id}}">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </button>
-                </div>
-                    <div class="tripHomeCard"> 
+                    <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt="" class="img-fluid">
+                    <h2>{{name}}</h2>
                     <p>{{description}}</p>
-                    </div>
-                    
-                
+                </div>
             </a>
-            {{/each}}
 
         </div>
+        {{/each}}
 
 
 </section>

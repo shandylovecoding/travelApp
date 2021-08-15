@@ -47,7 +47,6 @@ class searchService {
       .innerJoin("users", "users.id", "trip_plan.user_id")
       .where("users.username", username)
     return query.then((rows) => {
-      console.log(rows);
       return rows.map((row) => ({
         trip_id: row.id,
         trip_name: row.tripName,
@@ -87,7 +86,6 @@ class searchService {
       .innerJoin("trip_plan", "trip_plan_attraction.trip_plan_id", "trip_plan.id")
       .where("trip_plan.user_id",userId)
       return query.then((rows) => {
-        console.log(rows);
         return rows.map((row) => 
           row.attraction_id,
         )

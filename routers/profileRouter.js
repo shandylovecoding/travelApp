@@ -7,25 +7,24 @@ class ProfileRouter {
 
     router() {
         let router = express.Router();
-
         router.get("/", this.get.bind(this));
         router.get("/:id", this.get.bind(this));
-
         return router;
     }
 
-    get(req,res) {{
-        let userid = req.params.id;
-        console.log(userid);
-        return this.profileService
-        .list(userid)
-        .then((data) => {
-            res.render(data);
-            })
-        .catch((err) => {
-            res.status(500).json(err);
-        })
-    }};
+    get(req, res) {
+        {
+            let userid = req.params.id;
+            return this.profileService
+                .list(userid)
+                .then((data) => {
+                    res.render(data);
+                })
+                .catch((err) => {
+                    res.status(500).json(err);
+                })
+        }
+    };
 }
 
 module.exports = ProfileRouter;

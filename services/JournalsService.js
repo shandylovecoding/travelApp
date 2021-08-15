@@ -49,7 +49,6 @@ class JournalsService {
             .orderBy("journals.id", "asc");
         
         return query.then((rows) => {
-            console.log(rows)
             return rows.map((row) => {
                 if (row.photos) {
                     var base = Buffer.from(row.photos);
