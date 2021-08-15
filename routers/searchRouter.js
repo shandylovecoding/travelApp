@@ -63,8 +63,10 @@ class SearchRouter {
 
         getsearch(req,res) {
             var title = req.query.title;
-            return this.searchService.list(title)
+            console.log(title);
+            return this.searchService.listdistrict(title)
                 .then((content)=> {
+                    console.log("content",content);
                     res.json(content);
                 })
                 .catch((err)=> res.status(500).json(err));
