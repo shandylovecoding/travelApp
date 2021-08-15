@@ -49,7 +49,7 @@
     text-align: center;
 }
 
-.tripHomeCard {
+/* .tripHomeCard {
     width: 230px;
     height: 230px;
     background-color: #fff;
@@ -62,7 +62,7 @@
     background-position: center;
     background-size: cover;
     transition: transform 0.5s;
-}
+} */
 .tripHomeCard:hover{
     transform: translateY(-10px);
 }
@@ -75,3 +75,18 @@
     color: black;
    
 }   
+.tripplans{
+    font-family: "Architects Daughter";
+    font-size: 24px;
+    box-shadow: 10px 10px 24px 0px rgba(0,0,0,0.75);
+    border: none;
+    width:275px;
+    height:275px;
+    padding: 40px 25px 25px 25px;
+    background-color: #fff;
+}
+
+.tripHomeCardhead{
+    display: flex;
+    justify-content: space-between;
+}

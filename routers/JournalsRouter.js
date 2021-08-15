@@ -40,12 +40,12 @@ class JournalsRouter {
         if (req.files) {
             console.log('has photo')
             
-            return this.journalsService.add(req.user.id, req.body.post, req.files.photo.data, req.body.district_list).then(() => {
+            return this.journalsService.add(req.user.id, req.body.district_list, req.body.post, req.files.photo.data, ).then(() => {
                 return res.redirect("/journals");
             })
         } else {
             console.log('no photo')
-            return this.journalsService.add(req.user.id, req.body.post, req.body.district_list).then(() => {
+            return this.journalsService.add(req.user.id,req.body.district_list,  req.body.post).then(() => {
                     return res.redirect("/journals");
                 })
             }

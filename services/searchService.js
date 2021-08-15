@@ -6,7 +6,6 @@ class searchService {
 
   // List note is a function which is very important for the application, it retrieves the notes for a specific user. The user is accessed via req.auth.user within our router.
   listdistrict(title) {
-    console.log(3333);
     let query = this.knex
       .select("districts.id", "districts.district_name", "districts.district_introduction", "districts.district_photo")
       .from("districts")
@@ -23,12 +22,11 @@ class searchService {
 
   }
   listattraction(title) {
-    console.log(6);
     let query = this.knex
       .select("attractions.id as attraction_id", "attractions.attraction_name", "attractions.attraction_introduction", "attractions.attraction_photo")
       .from("districts")
       .innerJoin("attractions", "districts.id", "attractions.district_id")
-      .where("districts.district_name",title)
+      .where("districts.district_name",'like', `%${title}%`)
 
     return query.then((rows) => {
       return rows.map((row) => ({
@@ -43,7 +41,6 @@ class searchService {
 
 
   listtrip(username) {
-    console.log(6);
     let query = this.knex
       .select("trip_plan.tripName", "trip_plan.id", "users.username")
       .from("trip_plan")
@@ -60,13 +57,12 @@ class searchService {
   }
 
   listjournal(title) {
-    console.log(6);
     let query = this.knex
       .select("journals.content", "users.username","journals.photos")
       .from("journals")
       .innerJoin("districts", "districts.id", "journals.district_id")
       .innerJoin("users", "users.id", "journals.user_id")
-      .where("districts.district_name",title)
+      .where("districts.district_name",'like', `%${title}%`)
 
     return query.then((rows) => {
       return rows.map((row) => {

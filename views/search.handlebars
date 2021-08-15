@@ -54,7 +54,7 @@
                         <div class="modal-body">
                             <form action="/tripsHome/attraction" method="POST">
                                 <input type="text" name="attid" class="form-control" value={{att_id}} hidden></input>
-                                <select name="tripid" id="tripname">
+                                <select class="searchSelect" name="tripid" id="tripname">
                                     {{#each ../data.triplist}}
                                     <option value={{trip_id}}>{{trip_name}}</option>
                                     {{/each}}
