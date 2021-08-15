@@ -11,12 +11,11 @@ class tripsHomeRouter {
     }
 
     router() {
-        console.log(10);
         let router = express.Router();
 
 
         router.get("/", isLoggedIn, this.get.bind(this));
-        router.get("/attraction/:trip_plan_id", this.getAttraction.bind(this));
+        router.get("/attraction/:trip_plan_id",isLoggedIn, this.getAttraction.bind(this));
         router.post("/", isLoggedIn, this.postTrip.bind(this));
         router.post("/attraction", this.postAttraction.bind(this));
         router.delete("/:id", this.deleteTrip.bind(this));
@@ -25,11 +24,9 @@ class tripsHomeRouter {
     }
 
     get(req, res) {
-        console.log("req.userreq.userreq.user", req.user);
         return this.tripshomeService.list(req.user.id)
             .then((content) => {
                 res.render('tripsHome', { content: content, username: req.user.username });
-                console.log("content", content);
             })
             .catch((err) => res.status(500).json(err));
     };
@@ -43,20 +40,26 @@ class tripsHomeRouter {
 
     getAttraction(req, res) {
         console.log("get attraction")
-        return this.tripshomeService.listAttractions(req.params.trip_plan_id).then((attractions) => {
-            console.log("attractions info >>", attractions)
-            res.render("individualTrip", {
-                attractions: attractions,
-                username: req.user.username
-            });
-
+        let data ={}
+        return this.tripshomeService.listAttractions(req.params.trip_plan_id)
+        .then((attraction) => {
+            return data.attraction = attraction
         })
-            .catch((err) => res.status(500).json(err));
-
+        .then(()=>{
+            return  this.tripshomeService.listtrip(req.params.trip_plan_id)
+        })
+        .then((trip)=> {
+            return data.trip = trip
+        })
+        .then(()=>{
+            res.render('individualTrip',{
+                data: data,
+                username: req.user.username});
+        })
+        
     }
 
     postTrip(req, res) {
-        console.log("post trip")
         this.tripshomeService.addTrip(req.user.id, req.body.tripname, req.body.tripinfo).then(() => {
             return res.redirect("/tripsHome")
         })
@@ -64,9 +67,7 @@ class tripsHomeRouter {
     
     postAttraction(req, res) {
         console.log("post attraction")
-        console.log("!!!!!!!!!!!!!!!!!!");
         this.tripshomeService.checkAttraction(req.body.tripid, req.body.attid).then((result) => {
-            console.log("result", result);
             if (result) {
                 console.log("attraction del");
                 this.tripshomeService.removeAttraction(req.body.tripid, req.body.attid).then(() => {
@@ -82,15 +83,12 @@ class tripsHomeRouter {
         })
     }
     deleteTrip(req, res) {
-        console.log("delete trip")
         return this.tripshomeService.removeTrip(req.params.id).then(() => {
             return res.send('deleted');
         })
     }
 
     deleteAttraction(req, res) {
-        console.log("delete attraction")
-        console.log("params >> ", req.params.trip_plan_id, req.params.attraction_id)
         return this.tripshomeService.removeAttraction(req.params.trip_plan_id, req.params.attraction_id).then(() => {
             return res.send('deleted');
         })

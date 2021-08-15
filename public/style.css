@@ -214,7 +214,7 @@ input:focus {
     font-size: 20px;
 }
 
-select {
+.searchSelect {
     appearance: none;
     border: 0;
     outline: 0;
@@ -227,3 +227,4 @@ select {
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
   }
+

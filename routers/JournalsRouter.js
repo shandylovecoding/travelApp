@@ -26,26 +26,23 @@ class JournalsRouter {
         }).then(() =>{
             return this.journalsService.listAllDistricts()
         }).then((allDistricts) => {
-            console.log("allDistricts >> ", allDistricts)
             data.username = req.user.username;
             return data.district_list = allDistricts;
         }).then(() => {
-            console.log("journals data >>", data)
             res.render("journals", data)
         })
     }
 
     post(req, res) {
-        console.log("REQ BODY >> ", req.body)
         if (req.files) {
             console.log('has photo')
             
-            return this.journalsService.add(req.user.id, req.body.post, req.files.photo.data, req.body.district_list).then(() => {
+            return this.journalsService.add(req.user.id, req.body.district_list, req.body.post, req.files.photo.data, ).then(() => {
                 return res.redirect("/journals");
             })
         } else {
             console.log('no photo')
-            return this.journalsService.add(req.user.id, req.body.post, req.body.district_list).then(() => {
+            return this.journalsService.add(req.user.id,req.body.district_list,  req.body.post).then(() => {
                     return res.redirect("/journals");
                 })
             }
@@ -54,7 +51,6 @@ class JournalsRouter {
         delete(req, res) {
             console.log('delete')
             return this.journalsService.remove(req.params.id).then(() => {
-                console.log('senfing back delete')
                 return res.send('deleted');
             })
         }

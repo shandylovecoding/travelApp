@@ -8,14 +8,16 @@ class ProfileRouter {
     router() {
         let router = express.Router();
 
+
         router.get("/", (req,res) => {
             res.redirect("/:id", this.get.bind(this));
         });
 
-        router.get("/:id", this.get.bind(this));
 
+        router.get("/:id", this.get.bind(this));
         return router;
     }
+
 
     get(req,res) {
         let user = req.params.id;
@@ -35,6 +37,7 @@ class ProfileRouter {
                 message: "Invalid ID. Please go back and login or contact site administrators"
             })
         } 
+
 
     };
 }

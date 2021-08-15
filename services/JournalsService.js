@@ -3,8 +3,7 @@ class JournalsService {
         this.knex = knex;
     }
 
-    async add(user_id, post, district_id, photo) {
-        console.log("logging photo data >>", photo)
+    async add(user_id,  district_id, post, photo) {
 
         if (photo) {
             var newpost = {
@@ -21,7 +20,6 @@ class JournalsService {
                 content: post
             };
         };
-        console.log("newpostnewpost", newpost);
         var newpostID = await this.knex.insert(newpost).into("journals").returning("id");
         console.log(newpostID);
         newpost.id = newpostID;
@@ -51,7 +49,6 @@ class JournalsService {
             .orderBy("journals.id", "asc");
         
         return query.then((rows) => {
-            console.log(rows)
             return rows.map((row) => {
                 if (row.photos) {
                     var base = Buffer.from(row.photos);

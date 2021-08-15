@@ -3,7 +3,6 @@ class tripsHomeService {
     this.knex = knex
   }
   list(user_id) {
-    console.log("user_id",user_id);
     let query = this.knex
       .select("trip_plan.id", "trip_plan.tripName", "trip_plan.tripInfo")
       .from("trip_plan")
@@ -11,7 +10,6 @@ class tripsHomeService {
       .where("users.id",user_id)
 
     return query.then((rows) => {
-      console.log("owsowsowsowsows",rows);
       return rows.map((row) => ({
         id: row.id,
         name: row.tripName,
@@ -21,16 +19,31 @@ class tripsHomeService {
     });
     
   }
+  listtrip(trip_plan_id) {
+    let query = this.knex
+      .select("trip_plan.tripName","trip_plan.tripInfo", "trip_plan.id", "users.username")
+      .from("trip_plan")
+      .innerJoin("users", "users.id", "trip_plan.user_id")
+      .where("trip_plan.id", trip_plan_id)
+    return query.then((rows) => {
+      return rows.map((row) => ({
+        trip_id: row.id,
+        trip_name: row.tripName,
+        trip_info: row.tripInfo,
+        user_name: row.username,
+      }))
+    })
+  }
 
   listAttractions(trip_plan_id) {
-    let query = this.knex.select("attractions.attraction_name", "attractions.attraction_introduction", "attractions.attraction_photo", "trip_plan_attraction.attraction_id", "trip_plan_attraction.trip_plan_id")
+    let query = this.knex.select("attractions.attraction_name", "attractions.attraction_introduction", "attractions.attraction_photo",
+     "trip_plan_attraction.attraction_id", "trip_plan_attraction.trip_plan_id",)
       .from("attractions")
       .innerJoin("trip_plan_attraction", "attractions.id", "trip_plan_attraction.attraction_id")
       .innerJoin("trip_plan", "trip_plan_attraction.trip_plan_id", "trip_plan.id")
       .where("trip_plan.id", trip_plan_id)
   
     return query.then((rows) => {
-      console.log("rows >> ", rows)
       return rows.map((row) => (
         {
           attraction_name: row.attraction_name,
@@ -55,35 +68,19 @@ class tripsHomeService {
 
   }
 
-  // async addAttractions(trip_name, attraction_id) {
-  //   console.log("trip_nametrip_nametrip_name",trip_name);
-  //   let query = this.knex.select("trip_id").from("trip_plan").where("tripName", trip_name);
-  //   var newTripAttract;
-  //   query.then((results) => {
-  //     console.log(results);
-  //     newTripAttract = {
-  //       trip_plan_id: results[0].id,
-  //       attraction_id: attraction_id
-  //     }
-  //     console.log(newTripAttract);
-  //   })
-
-  //   var newTripAttractID = await this.knex.insert(newTripAttract).into("trip_plan_attraction").returning('id');
-  //   newTripAttract.id = newTripAttractID;
-  // }
-
   checkAttraction(trip_id, att_id) {
-    console.log("Now checking attraction..")
     let query = this.knex
       .select("trip_plan_attraction.attraction_id")
       .from("trip_plan_attraction")
       .where("trip_plan_attraction.trip_plan_id",trip_id)
+      .where("trip_plan_attraction.attraction_id", att_id)
       return query.then((rows) => {
-      console.log("rows.length",rows.length); 
-      if(rows.length>0 ){
-        return true
-      }else{
+      if(rows.length < 1 ){
         return false
+      }else if (rows.map((row)=>{
+        row.attraction_id == att_id
+      })){
+        return true
       }
       })
 }
@@ -93,7 +90,6 @@ class tripsHomeService {
       attraction_id: attraction_id,
       trip_plan_id: trip_id,
     }
-    console.log(newAttr);
 
     let newAttrId = await this.knex.insert(newAttr).into("trip_plan_attraction").returning("id");
     console.log(newAttrId);
