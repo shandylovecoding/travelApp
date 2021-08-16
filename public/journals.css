@@ -1,20 +1,12 @@
-
-
 .journalCol {
     text-align: center;
 }
 
-
-#postButton{
+#postButton {
     position: absolute;
     right: 16px;
     padding: 5px;
-    
 }
-
-
-
-
 
 @media screen and (min-width: 1180px) {
     .main {
@@ -22,8 +14,6 @@
         margin: auto;
     }
 }
-
-
 
 .row2 {
     display: flex;
@@ -47,15 +37,13 @@
 }
 
 body {
-    background-image: linear-gradient(
-        rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(hkwallpaper.jpg);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(hkwallpaper.jpg);
     background-attachment: fixed;
     background-position: center !important;
     background-size: cover !important;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     margin: auto;
-    
 }
 
 .jpcard {
@@ -128,18 +116,22 @@ hr {
     top: 8px;
     color: #a09c9c
 }
-.input2{
+
+.input2 {
     margin-top: 10px;
+    width: 100%px;
+    height: 150px;
 }
-.jourSelect:focus,
-.input2:focus {
+
+.jourSelect:focus, .input2:focus {
     color: #495057;
     border-color: #8bbafe;
     outline: 0;
     box-shadow: none;
-    border:none;
+    border: none;
 }
-.jourSelect{
+
+.jourSelect {
     float: right;
     border: none;
 }

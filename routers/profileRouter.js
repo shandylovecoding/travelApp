@@ -22,11 +22,13 @@ class ProfileRouter {
     get(req,res) {
         let user = req.params.id;
         console.log(user);
-
+        
         if(typeof user != "undefined"){
             return this.profileService.list(user)
                 .then((data) => {
+                    
                     return res.render("profile", {post: data, user: req.params.id});
+                    
                  })
                 .catch((err) => {
                     res.status(500).json(err);
