@@ -1,34 +1,7 @@
 
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('users').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('users').insert([
-        {
-          id: 1,
-          email: 'jack@gmail.com',
-          username: 'jack1',
-          password: 'jackpassword'
-        },
-        {
-          id: 2,
-          email: 'josh@gmail.com',
-          username: 'josh1',
-          password: 'joshpassword'
-        },
-        {
-          id: 3,
-          email: 'john@gmail.com',
-          username: 'john1',
-          password: 'johnpassword'
-        }
-        
-      ]);
-    })
-    .then(()=>{
-      return knex('districts').del();
-    })
+  return knex('districts').del()
     .then(function () {
       // Inserts seed entries
       return knex('districts').insert([
@@ -90,26 +63,5 @@ exports.seed = function (knex) {
         }
       ]);
     })
-    .then(()=>{
-      return knex('trip_plan').del();
-    })
-    .then(function () {
-      // Inserts seed entries
-      return knex('trip_plan').insert([
-        {id: 1, user_id: 1, attraction_id: 1, tripName: 'hk', tripInfo: 'what to eat?'},
-        {id: 2, user_id: 2, attraction_id: 2, tripName: 'hkdream', tripInfo: 'where to go?'},
-        {id: 3, user_id: 3, attraction_id: 3, tripName: 'hkfun', tripInfo: 'What to do?'}
-      ]);
-    })
-    .then(()=>{
-      return knex('journals').del();
-    })
-    .then(function () {
-      // Inserts seed entries
-      return knex('journals').insert([
-        {id: 1, user_id: 1, district_id: 1, content: 'Quite a crap trip', time_of_creation: '05_08_21'},
-        {id: 2, user_id: 2, district_id: 2, content: 'OK LA', time_of_creation: '05_08_21'},
-        {id: 3, user_id: 3, district_id: 3, content: 'Sometimes good, Sometimes Bad La', time_of_creation: '05_08_21'}   
-      ]);
-    }); 
+
 };
