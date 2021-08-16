@@ -23,7 +23,7 @@
                             <option value="{{this.id}}">{{this.name}}</option>
                             {{/each}}
                         </select>
-                        <textarea class="input2" type="text" name="post" id="post"
+                        <textarea class="input2" type="text" name="post" id="journalPost"
                             placeholder="Post your Trip Journal here!" cols="60" rows="1"></textarea>
 
                         <hr>
@@ -45,17 +45,18 @@
             <div class="col-md-6">
                 <div class="card jpcard">
                     <div class="d-flex justify-content-between p-2 px-3">
-                        <div class="d-flex flex-row align-items-center">
+                        {{!-- <div class="d-flex flex-row align-items-center"> --}}
                              {{!-- <img src="central.jpeg" width="50" height="50"
                                 class="rounded-circle"> --}}
                             {{!-- <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Journal Entry:</span>
 
                             </div> --}}
                             
-                        </div>
+                        {{!-- </div> --}}
 
                             <div>{{this.district_name}}</div>
 
+                       </div> <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt=""
                         class="img-fluid">
                     <div class="p-2">
                         <span class="text-justify" data-id="{{this.id}}">{{this.content}}</span>

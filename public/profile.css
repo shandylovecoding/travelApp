@@ -1,22 +1,19 @@
-.profileContainer {
-    width: 100% !important;
-    height: 100vh !important;
-    background-image: linear-gradient(
-        rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(./carousel2.jpeg);
-    background-size: cover !important;
+
+
+body {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./profileWallpaper.jpg);
     background-attachment: fixed;
     background-position: center !important;
-    padding-left: 8% !important;
-    padding-right: 8% !important;
-    box-sizing: border-box !important;
-    top: 0;
-    position: absolute;
-    z-index: -999;
-    padding-top: 160px;
+    background-size: cover !important;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    margin: auto;
+    width: 100%;
 }
 
 .profileCard {
     background:rgb(212, 205, 205);
+    margin-bottom: 10px;
 }
 
 .post {
@@ -79,4 +76,12 @@ h5::first-letter {
 
 .media-comment {
     margin-top:20px
+}
+
+.userCard {
+    margin: 3px;
+}
+
+.profileCard {
+    margin-left: 60px;
 }
