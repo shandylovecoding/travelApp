@@ -1,20 +1,14 @@
-$(document).ready(function() {
-    $('.heart').on('click', function(e) {
-        $(e.currentTarget).toggleClass("red");
-    });
-    
-})
 
 
 ///Ajax for typeahead
-$(document).ready(function ()
-{
+$(document).ready(function (){
     $('.typeahead').typeahead(
     {
         name: 'title',
         source: function (title, callback) {
-            $.getJSON("http://localhost:8000/search/search?title=" + title, function (data) {
-                console.log(data);
+
+            $.getJSON("http://localhost:8080/search/search?title=" + title, function (data) {
+                console.log("here",data);
                 return callback(data);
             });
         },
@@ -25,14 +19,11 @@ $(document).ready(function ()
 
 var searchsTemplate = Handlebars.compile(
     `
-    {{#eachUnique content}}
-
-
+    {{#eachUnique data.content}}
 
     <section class="search_secOne" style="background: url({{photo}}) no-repeat center center;background-size: cover;">
-    
-    
     </section>
+
     <div id={{id}} class="district_title">
         <h1><span style="color:#ff5d5d;">Explore</span><span>{{name}}</span></h1>
     </div>
@@ -45,43 +36,77 @@ var searchsTemplate = Handlebars.compile(
             <h2>Attractions</h2>
             </br>
             <div class="row">
-    
-                {{#each content}}
+
+                {{#each data.content}}
                 <div class="card ">
-                    <div class="card-title" style=" margin-top: 10px;">
+                    <div id={{att_id}} class="card-title" style=" margin-top: 10px;">
                         <span>
                             <h5>{{att_name}}</h5>
                         </span>
-                        <span><i class="fa fa-heart heart"></i></span>
+                        <span class="heart"><a data-target="#triplist{{att_id}}" data-toggle="modal"><i
+                                    class="fa fa-heart heart"></i></a></span>
                     </div>
                     <img src={{att_photo}} class="card-img-top" width="200px" height="150px" alt="...">
                     <div class="card-body">
                         <p class="card-text">{{att_intro}}</p>
                     </div>
                 </div>
+
+                <div id="triplist{{att_id}}" class="modal in" style="display: none; width:400px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <form action="/tripsHome/attraction" method="POST">
+                                <input type="text" name="attid" class="form-control" value={{att_id}}></input>
+                                <input type="text" name="tripname" class="form-control" required="required"
+                                    value={{trip_name}}></input>
+
+
+                                <input data-dismiss="modal" type="submit" class="btn btn-secondary btn-block btn-lg"
+                                    value="Create">
+                            </form>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                </div>
                 {{/each}}
+            
             </div>
         </div>
+
+    </section>
+
+    <section class="search_secJour">
+        <div class="journal_container">
+            <h2>Journals</h2>
+            </br>
+            <div class="row">
+                {{#eachUnique data}}
+                <div class="card ">
+                    <div class="card-title" style=" margin-top: 10px;">
+                        <span>
+                            <h5>{{user_name}}</h5>
+                        </span>
+                        {{#if username}}
+                        <span><i class="fa fa-heart heart"></i></span>
+                        {{else}}
+                        {{/if}}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{jour_content}}</p>
+                    </div>
+                </div>
+                {{/eachUnique}}
+            </div>
     </section>
       `
   );
   
-  // This function is responsible of re-rendering the page every time we update our notes. It recieves the array of notes and then forces each note (each element within the array) into the notes template, which iterates through the array rendering all the notes to the DOM in the same format.
-  const reload = (content) => {
-    // console.log(8);
-    $("#searchs").html(searchsTemplate({content: content}));
-    console.log("content frontend",content);
-  };
-  
-$(() => {
-    axios
-      .get("/search")
-      .then((content) => {
-          console.log(content);
-        // reload(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
 
-    })
+
+
+////////
+
+
+

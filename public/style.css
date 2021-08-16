@@ -15,6 +15,7 @@ body {
     padding: 10px 100px;
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 
 .nav-link {
@@ -28,6 +29,10 @@ body {
 .carousel {
     position: absolute;
     z-index: -999;
+}
+
+.carousel-inner h6 {
+    margin-top: 20px;
 }
 
 .carousel-caption {
@@ -107,11 +112,11 @@ input:focus {
 }
 
 
-.modal{
-    top:15vh;
+.modal {
+    top: 15vh;
 }
 
-.journalsContent{
+.journalsContent {
     display: inline-block;
 }
 
@@ -126,7 +131,7 @@ input:focus {
 
 .district_title h1 {
     font-size: 70px;
-
+    margin-left: 100px;
 }
 
 .district_intro {
@@ -144,13 +149,14 @@ input:focus {
     top: 80vh;
 }
 
+.journal_container,
 .attraction_container {
     padding-right: 100px;
     padding-left: 100px;
 
 }
 
-.row {
+.att_row {
     margin: 0 auto;
     width: 100%;
     display: grid;
@@ -158,11 +164,12 @@ input:focus {
     grid-column-gap: 10px;
 }
 
-.card {
-    padding: 10px
+.att_card {
+    padding: 10px;
+    margin-bottom: 50px;
 }
 
-.card-title {
+.att_card-title {
     display: flex;
     justify-content: space-between;
 }
@@ -175,4 +182,52 @@ input:focus {
 .heart.red {
     color: red;
 }
+
+
+.jour_row {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1200px);
+    grid-column-gap: 10px;
+}
+
+.jour_card {
+    display: grid;
+    grid-template-columns: repeat(3, 300px 600px 300px);
+    grid-column-gap: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.jour_card span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.jour_card h5{
+    font-size: 24px;
+    font-weight: 600;
+}
+.jour_card p {
+    font-size: 20px;
+}
+
+
+
+.searchSelect {
+    appearance: none;
+    border: 0;
+    outline: 0;
+    width: 365px;
+    height: 50px;
+    padding: 0 10px;
+    border-radius: 0.25em;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/4/42/Font_Awesome_5_solid_caret-down.svg)
+    no-repeat right 0.8em center / 1.4em, rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
 

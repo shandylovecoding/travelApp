@@ -87,4 +87,8 @@ exports.seed = function (knex) {
    
     
     
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 02a37d3385ae8502967b0ef1d908d95c542947a3

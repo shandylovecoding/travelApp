@@ -43,6 +43,7 @@ exports.up = function(knex) {
         table.foreign('attraction_id').references('attractions.id');
         table.timestamps(false,true);
     })
+<<<<<<< HEAD
     .createTable('journals', (table) => {
         table.increments().primary();
         table.integer('user_id').unsigned();
@@ -107,6 +108,8 @@ exports.down = function(knex) {
         table.foreign('attraction_id').references('attractions.id');
         table.timestamps(false,true);
     })
+=======
+>>>>>>> 02a37d3385ae8502967b0ef1d908d95c542947a3
     .createTable('journals', (table) => {
         table.increments().primary();
         table.integer('user_id').unsigned();

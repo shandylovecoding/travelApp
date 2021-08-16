@@ -1,0 +1,91 @@
+/* .indiTrip {
+    width: 100% !important;
+    height: 100vh !important;
+    background-image: linear-gradient(
+        rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(./wallpaper2.jpg);
+    background-size: cover !important;
+    background-attachment: fixed;
+    
+    background-position: center !important;
+   
+    padding-left: 8% !important;
+    padding-right: 8% !important;
+    box-sizing: border-box !important;
+    top: 0;
+    position: absolute;
+    z-index: -999;
+    background-attachment: fixed !important;
+
+} */
+body {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(hkwallpaper.jpg);
+    background-attachment: fixed;
+    background-position: center !important;
+    background-size: cover !important;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    margin: auto;
+}
+
+.indiTripRows {
+    /* display: flex; */
+    height: 100%;
+    align-items: center;
+    position: fixed;
+    margin-left: 150px;
+}
+
+/* .inditripCols{
+    position: relative; 
+    top: 100px;
+    
+} */
+
+.indiTripRows h1 {
+    color: #fff;
+    font-size: 70px;
+}
+.indiTripRows p {
+    color: #fff;
+    font-size: 25pxpx;
+    line-height: 20px;
+}
+
+/* .indiTripButton{
+    width: 180px;
+    color: #000;
+    font-size: 16px;
+    padding: 16px 0;
+    background: #fff;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 30px;
+    text-align: center;s
+    margin-left: 3px;
+} */
+
+.indiTripCards {
+    margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+
+
+}
+.indiTripCards:hover{
+    transform: translateY(-10px);
+}
+
+.indiTripCards h2{ 
+    color: white;
+    
+}   
+.indiTripCards p{ 
+    color: black;
+    
+}   
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}

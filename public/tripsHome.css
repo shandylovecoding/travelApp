@@ -1,10 +1,12 @@
+
 .tripsHome {
     width: 100% !important;
     height: 100vh !important;
     background-image: linear-gradient(
-        rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(./carousel2.jpeg);
-    background-position: center !important;
+        rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(./carousel2.jpeg);
     background-size: cover !important;
+    background-attachment: fixed;
+    background-position: center !important;
     padding-left: 8% !important;
     padding-right: 8% !important;
     box-sizing: border-box !important;
@@ -20,34 +22,38 @@
 }
 
 .tripHomeCol{
-    flex-basis: 50%;
+    position: relative;
+    top: 100px;
 }
 
 .tripHomeRow h1 {
     color: #fff;
-    font-size: 100px;
+    font-size: 70px;
 }
 .tripHomeRow p {
     color: #fff;
-    font-size: 11px;
-    line-height: 15px;
+    font-size: 15px;
+    line-height: 20px;
+    
 }
 
 .tripButton{
     width: 180px;
     color: #000;
-    font-size: 12px;
+    font-size: 16px;
     padding: 12px 0;
     background: #fff;
     border: 0;
     border-radius: 20px;
     outline: none;
     margin-top: 30px;
+    text-align: center;
 }
 
-.tripHomeCard {
-    width: 200px;
+/* .tripHomeCard {
+    width: 230px;
     height: 230px;
+    background-color: #fff;
     display: inline-block;
     border-radius: 10px;
     padding: 15px 25px;
@@ -57,34 +63,35 @@
     background-position: center;
     background-size: cover;
     transition: transform 0.5s;
-}
-
-.card1 {
-    background-image: url(./carousel3.jpeg);
-
-}
-.card2 {
-    background-image: url(./dingding.jpeg);
-
-}
-.card3 {
-    background-image: url(./carousel2.jpeg);
-
-}
-.card4 {
-    background-image: url(./central.jpeg);
-
-}
-
+} */
 .tripHomeCard:hover{
     transform: translateY(-10px);
 }
 
-.tripHomeCard h5{ 
+.tripHomeCard h2{ 
     color: black;
-    text-shadow:  0 0 5px #999;
+   
 }   
 .tripHomeCard p{ 
     color: black;
-    text-shadow:  0 0 5px #999;
+   
 }   
+.tripplanContainer{
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+}
+.tripplans{
+    font-family: "Architects Daughter";
+    font-size: 24px;
+    box-shadow: 10px 10px 24px 0px rgba(0,0,0,0.75);
+    border: none;
+    width:275px;
+    height:275px;
+    padding: 40px 25px 25px 25px;
+    background-color: #fff;
+}
+
+.tripHomeCardhead{
+    display: flex;
+    justify-content: space-between;
+}

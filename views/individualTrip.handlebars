@@ -1,0 +1,37 @@
+<section class="indiTrip">
+
+    <div class="indiTripRows ">
+        {{!-- <div class="inditripCols col-4"> --}}
+            {{#each data.trip}}
+            <h1>{{trip_name}}</h1>
+            <p> {{trip_info}}
+            </p>
+            {{/each}}
+            {{!-- <a href="/journals" class="indiTripButton" type="button">Write About Your Trip</a> --}}
+        </div>
+
+
+        {{#each data.attraction}}
+        <div class="card mb-2 indiTripCards" style="width: 1000px; background-color:lightgrey;">
+            <img class="card-img-top" src="{{this.attraction_photo}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{this.attraction_name}}</h5>
+                <p class="card-text">{{this.attraction_introduction}}</p>
+                <button id="" class="removeAttraction btn btn-dark" data-id="{{this.ids}}">Delete</button>
+            </div>
+        </div>
+        {{/each}}
+
+        {{!-- {{#each data.attraction}}
+        <div class="indiTripCards" style="background-image:url({{this.attraction_photo}})">
+            <h2>{{this.attraction_name}}</h2>
+            <p>{{this.attraction_introduction}}</p>
+            <button id="" class="removeAttraction btn btn-primary btn-sm" data-id="{{this.ids}}">Delete</button>
+
+        </div>
+        {{/each}} --}}
+
+
+
+    </div>
+</section>

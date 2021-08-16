@@ -1,23 +1,76 @@
-<div id="postJournals">
-    <form id="postForm" action="/api/journals" method="POST" enctype="multipart/form-data" >
-    <textarea type="text" name="post" id="post" placeholder="Post your Trip Journal here!" cols="50" rows="10"></textarea>
-     <div id="postButtons">
-     Attach Photo: <input type="file" name="photo">
-     <input id= "postButton" class="btn btn-outline-dark btn-sm" type="submit" value="Post">
-    </div>
-    </form>
-</div>
+<link rel="stylesheet" href="./journals.css">
+<section class="journalsPage">
+    {{!-- <div class=" d-flex justify-content-center flex-column container mt-5 mb-5"> --}}
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="d-flex justify-content-between p-4 px-3">
+                        <div class="d-flex flex-row align-items-center"> 
+                            {{!-- <img src="central.jpeg" width="50" height="50"
+                                class="rounded-circle"> --}}
+                            <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Journal Post:</span>
+                            </div>
+                        </div>
+                        {{!--
+                    </div> --}}
 
-<div class="container" id="journals">
-    
-    {{#each list}}
-    <div class="journal row">
-        <div class="col-12 journalCol">
-        <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt="">
-        <span class="journalsContent" data-id="{{this.id}}">{{this.content}}</span>
-        <button id="delete" class="remove btn btn-outline-dark btn-sm" data-id="{{this.id}}">Delete</button>    
+                </div>
+                <div class="p-3">
+
+                    <form id="postForm" action="/journals" method="POST" enctype="multipart/form-data">
+                        <select class="jourSelect" name="district_list" id="district_list">
+                            {{#each district_list}}
+                            <option value="{{this.id}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                        <textarea class="input2" type="text" name="post" id="journalPost"
+                            placeholder="Post your Trip Journal here!" cols="60" rows="1"></textarea>
+
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="file" name="photo">
+                            <input id="postButton" class="btn btn-outline-dark btn-sm" type="submit" value="Post">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
         </div>
     </div>
-    {{/each}}
-    
-</div 
+    </div>
+
+    {{#each list}}
+    {{!-- <div class="container mt-5 mb-5"> --}}
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-6">
+                <div class="card jpcard">
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        {{!-- <div class="d-flex flex-row align-items-center"> --}}
+                             {{!-- <img src="central.jpeg" width="50" height="50"
+                                class="rounded-circle"> --}}
+                            {{!-- <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Journal Entry:</span>
+
+                            </div> --}}
+                            
+                        {{!-- </div> --}}
+
+                            <div>{{this.district_name}}</div>
+
+                       </div> <img src="data:image/png;base64, {{this.photos}}" width="" height="" alt=""
+                        class="img-fluid">
+                    <div class="p-2">
+                        <span class="text-justify" data-id="{{this.id}}">{{this.content}}</span>
+
+                        <hr>
+                        <button id="delete" class="remove btn btn-outline-dark btn-sm"
+                            data-id="{{this.id}}">Delete</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{{/each}}
