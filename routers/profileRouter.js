@@ -27,7 +27,7 @@ class ProfileRouter {
             return this.profileService.list(user)
                 .then((data) => {
                     
-                    return res.render("profile", {post: data, user: req.params.id});
+                    return res.render("profile", {post: data, user: req.params.id,  username: req.user.username});
                     
                  })
                 .catch((err) => {
