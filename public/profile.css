@@ -68,6 +68,7 @@ h5::first-letter {
 
 .g-color-gray-dark-v4 {
     color: #000 !important;
+    border-left: rgba(0, 0, 0, 0.15);
 }
 
 .g-font-size-12 {
