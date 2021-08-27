@@ -12,12 +12,12 @@ body {
 }
 
 .profileCard {
-    background:rgb(212, 205, 205);
+    background:#fff;
     margin-bottom: 10px;
 }
 
 .post {
-    background:rgb(212, 205, 205);
+    background:#fff
 }
 
 #profilePic img {
@@ -67,7 +67,8 @@ h5::first-letter {
 }
 
 .g-color-gray-dark-v4 {
-    color: #777 !important;
+    color: #000 !important;
+    border-left: rgba(0, 0, 0, 0.15);
 }
 
 .g-font-size-12 {

@@ -31,8 +31,7 @@ body {
     /* display: flex; */
     height: 100%;
     align-items: center;
-    position: fixed;
-    margin-left: 150px;
+    text-align: center;
 }
 
 /* .inditripCols{
@@ -69,6 +68,7 @@ body {
     margin: 0 auto; /* Added */
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
+        margin-top: 20px;
 
 
 }
