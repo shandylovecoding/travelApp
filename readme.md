@@ -1,4 +1,6 @@
 # TravelApp
+![image](https://i.postimg.cc/MZNXgtWP/Screenshot-2021-09-28-at-11-53-34-PM.png)
+
 This is the Hong Kong Travels website project.
 We've used Node.JS, Knex.JS and Postgres for the backend,
 and Bootstrap and Express-Handlebars on the frontend.
